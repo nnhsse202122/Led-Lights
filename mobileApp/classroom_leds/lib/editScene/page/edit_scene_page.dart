@@ -13,14 +13,15 @@ class EditScenePage extends StatefulWidget {
 class _EditScenePageState extends State<EditScenePage> {
   Color _tempColor;
   Scene _scene;
-  _EditScenePageState(Scene initialScene)
-  {
-    _scene = Scene(initialScene.id, initialScene.time, initialScene.color, initialScene.mode);
+  _EditScenePageState(Scene initialScene) {
+    _scene = Scene(initialScene.id, initialScene.time, initialScene.color,
+        initialScene.mode);
   }
 
   @override
   Widget build(BuildContext context) {
-    final timeAsString = "${_scene.time.hour}:" + _scene.time.minute.toString().padLeft(2, '0');
+    final timeAsString =
+        "${_scene.time.hour}:" + _scene.time.minute.toString().padLeft(2, '0');
     return Scaffold(
       appBar: AppBar(title: Text("Edit this scene")),
       floatingActionButton: Builder(
