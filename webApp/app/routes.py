@@ -106,8 +106,15 @@ def index():
                 of time in minutes."
         }
     ]
-
-    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3)
+    #CODE RIGHT HERE TO PUT IN DATA
+    posts4 = [
+        {
+            'author': {'username': 'Bill'},
+            'body': "Override Duration: Override the LEDs right now for a specified amount \
+                of time in minutes."
+        }
+    ]
+    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, posts4 = posts4)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): #Figure out which 
