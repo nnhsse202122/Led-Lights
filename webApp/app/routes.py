@@ -7,6 +7,8 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Da
 from app.models import User
 import requests
 import json
+import os
+
 #from decimal import Decimal
 
 @app.before_request
@@ -107,14 +109,10 @@ def index():
         }
     ]
     #CODE RIGHT HERE TO PUT IN DATA
-    posts4 = [
-        {
-            'author': {'username': 'Bill'},
-            'body': "Override Duration: Override the LEDs right now for a specified amount \
-                of time in minutes."
-        }
-    ]
-    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, posts4 = posts4)
+    
+    #get = requests.get(url = )
+    #posts4 = data
+    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): #Figure out which 

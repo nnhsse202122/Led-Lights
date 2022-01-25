@@ -29,8 +29,10 @@
         <br>
     {% endfor %}
     <table>
+        {% for post in posts4 %}
         <tr valign="tom">
-            <td>placeholder</td>
+            <td>{{ post.id }}</td>
         </tr>
+        {% endfor %}
     </table>
 {% endblock %}
