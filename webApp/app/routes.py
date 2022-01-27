@@ -109,9 +109,11 @@ def index():
         }
     ]
     #CODE RIGHT HERE TO PUT IN DATA
-    
-    #get = requests.get(url = )
-    #posts4 = data
+    r = requests.get("https://classroomleds.nnhsse.org/leds/1")
+    data = r.json()
+    data_dumps = json.dumps(data)
+    dataDict = json.loads(data_dumps)
+    scenes = [dataDict]
     return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3)
 
 @app.route('/login', methods=['GET', 'POST'])
