@@ -1,4 +1,4 @@
-package com.example.verygoodcore.flutter_todos
+package com.example.verygoodcore
 
 import io.flutter.embedding.android.FlutterActivity
 
