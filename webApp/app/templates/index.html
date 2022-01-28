@@ -29,10 +29,27 @@
         <br>
     {% endfor %}
     <table>
-        {% for scene in scenes %}
-        <tr valign="tom">
-            <td>{{ scene.id }}</td>
+        <tr>
+            <th>ID</th>
+            <th>Color</th>
+            <th>Bright</th>
+            <th>Mode</th>
+            <th>Day</th>
+            <th>Start Time</th>
+
         </tr>
-        {% endfor %}
+    {% for scene in dataDict %}
+   
+        <tr valign="top">
+            <td>{{ scene.id }}</td>
+            <td>{{ scene.color }}</td> 
+            <td>{{ scene.brightness }}</td>    
+            <td>{{ scene.mode }}</td>
+            <td>{{ scene.day_of_week }}</td>
+            <td>{{ scene.start_time }}</td>
+            <th></th>
+        </tr>
+    {% endfor %}
     </table>
+    
 {% endblock %}

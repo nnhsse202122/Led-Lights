@@ -112,9 +112,10 @@ def index():
     r = requests.get("https://classroomleds.nnhsse.org/leds/1")
     data = r.json()
     data_dumps = json.dumps(data)
-    dataDict = json.loads(data_dumps)
-    scenes = [dataDict]
-    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3)
+    dataDict = json.loads(data_dumps)['scenes']
+    #print(dataDict)
+
+    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, dataDict = dataDict)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): #Figure out which 
