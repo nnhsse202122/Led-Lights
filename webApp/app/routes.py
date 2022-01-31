@@ -8,6 +8,7 @@ from app.models import User
 import requests
 import json
 import os
+import time
 
 #from decimal import Decimal
 
@@ -114,6 +115,14 @@ def index():
     data_dumps = json.dumps(data)
     dataDict = json.loads(data_dumps)['scenes']
     #print(dataDict)
+
+#appending date strings to only be the time
+   # for i in dataDict:
+   #     sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+   #     sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
+    #    i["start_time"] = sch_time
+
+    
 
     return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, dataDict = dataDict)
 

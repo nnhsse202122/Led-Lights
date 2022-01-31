@@ -28,28 +28,82 @@
         <br>
         <br>
     {% endfor %}
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Color</th>
-            <th>Bright</th>
-            <th>Mode</th>
-            <th>Day</th>
-            <th>Start Time</th>
 
-        </tr>
+
+    <table class = "table">
+        <thead class = "thead-dark">
+            <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Color</th>
+                <th scope="col">Bright</th>
+                <th scope="col">Mode</th>
+                <th scope="col">ID</th>
+                <th scope="col">Start Time</th>
+        
+            </tr>
+        </thead>
+        <tbody>
     {% for scene in dataDict %}
-   
-        <tr valign="top">
-            <td>{{ scene.id }}</td>
+    {% if scene.day_of_week == "monday" %}
+        <tr>
+            <td>{{ scene.day_of_week }}</td>
             <td>{{ scene.color }}</td> 
             <td>{{ scene.brightness }}</td>    
             <td>{{ scene.mode }}</td>
-            <td>{{ scene.day_of_week }}</td>
+            <td>{{ scene.id }}</td>
             <td>{{ scene.start_time }}</td>
-            <th></th>
         </tr>
+    {% endif %}
     {% endfor %}
+    {% for scene in dataDict %}
+    {% if scene.day_of_week == "tuesday" %}
+        <tr>
+            <td>{{ scene.day_of_week }}</td>
+            <td>{{ scene.color }}</td> 
+            <td>{{ scene.brightness }}</td>    
+            <td>{{ scene.mode }}</td>
+            <td>{{ scene.id }}</td>
+            <td>{{ scene.start_time }}</td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+    {% for scene in dataDict %}
+    {% if scene.day_of_week == "wednesday" %}
+        <tr>
+            <td>{{ scene.day_of_week }}</td>
+            <td>{{ scene.color }}</td> 
+            <td>{{ scene.brightness }}</td>    
+            <td>{{ scene.mode }}</td>
+            <td>{{ scene.id }}</td>
+            <td>{{ scene.start_time }}</td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+    {% for scene in dataDict %}
+    {% if scene.day_of_week == "thursday" %}
+        <tr>
+            <td>{{ scene.day_of_week }}</td>
+            <td>{{ scene.color }}</td> 
+            <td>{{ scene.brightness }}</td>    
+            <td>{{ scene.mode }}</td>
+            <td>{{ scene.id }}</td>
+            <td>{{ scene.start_time }}</td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+    {% for scene in dataDict %}
+    {% if scene.day_of_week == "friday" %}
+        <tr>
+            <td>{{ scene.day_of_week }}</td>
+            <td>{{ scene.color }}</td> 
+            <td>{{ scene.brightness }}</td>    
+            <td>{{ scene.mode }}</td>
+            <td>{{ scene.id }}</td>
+            <td>{{ scene.start_time }}</td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+        </tbody>
     </table>
     
 {% endblock %}
