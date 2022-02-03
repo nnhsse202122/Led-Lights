@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user, login_required
@@ -7,7 +7,6 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Da
 from app.models import User
 import requests
 import json
-import os
 import time
 
 #from decimal import Decimal
@@ -15,7 +14,7 @@ import time
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
+        current_user.last_seen = datetime.datetime.utcnow()
         db.session.commit()
 
 
@@ -117,13 +116,12 @@ def index():
     #print(dataDict)
 
 #appending date strings to only be the time
-   # for i in dataDict:
-   #     sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
-   #     sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
-    #    i["start_time"] = sch_time
+    for i in dataDict:
+        sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+        sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
+        i["start_time"] = sch_time
 
     
-
     return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, dataDict = dataDict)
 
 @app.route('/login', methods=['GET', 'POST'])
