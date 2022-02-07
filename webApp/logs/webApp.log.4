@@ -1,8 +1,4 @@
-2022-01-19 14:50:41,938 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-20 14:32:45,307 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-20 14:34:52,660 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-24 14:53:53,109 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-24 14:54:01,305 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+2022-01-24 15:01:11,570 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -18,51 +14,50 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 110, in index
+  File "C:\Led-Lights\webApp\app\routes.py", line 111, in index
+    f = open('./Led-Lights/server/routes/leds.json')
+FileNotFoundError: [Errno 2] No such file or directory: './Led-Lights/server/routes/leds.json'
+2022-01-24 15:01:15,614 ERROR: Exception on /index [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webApp\app\routes.py", line 111, in index
+    f = open('./Led-Lights/server/routes/leds.json')
+FileNotFoundError: [Errno 2] No such file or directory: './Led-Lights/server/routes/leds.json'
+2022-01-25 14:41:15,913 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-01-25 14:41:20,813 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-01-25 14:41:32,855 ERROR: Exception on /index [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webApp\app\routes.py", line 111, in index
     f = open('leds.json')
 FileNotFoundError: [Errno 2] No such file or directory: 'leds.json'
-2022-01-24 14:55:03,275 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-24 14:55:05,139 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
-Traceback (most recent call last):
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 110, in index
-    f = open('server/routes/leds.json')
-FileNotFoundError: [Errno 2] No such file or directory: 'server/routes/leds.json'
-2022-01-24 14:55:44,281 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-24 14:55:50,412 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
-Traceback (most recent call last):
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 110, in index
-    f = open('C:\Led-Lights\server\routes\leds.json')
-OSError: [Errno 22] Invalid argument: 'C:\\Led-Lights\\server\routes\\leds.json'
-2022-01-24 14:58:46,051 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-24 14:58:46,970 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+2022-01-25 14:44:48,429 ERROR: Exception on /index [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -79,10 +74,9 @@ Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
   File "C:\Led-Lights\webApp\app\routes.py", line 111, in index
-    f = open('.\server\routes\leds.json')
-OSError: [Errno 22] Invalid argument: '.\\server\routes\\leds.json'
-2022-01-24 14:59:09,290 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-24 14:59:10,177 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+    f = open('leds.json')
+FileNotFoundError: [Errno 2] No such file or directory: 'leds.json'
+2022-01-25 14:44:59,422 ERROR: Exception on /index [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -99,10 +93,10 @@ Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
   File "C:\Led-Lights\webApp\app\routes.py", line 111, in index
-    f = open('.\server\routes\leds.json')
-OSError: [Errno 22] Invalid argument: '.\\server\routes\\leds.json'
-2022-01-24 15:00:01,132 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-24 15:00:04,252 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+    f = open('leds.json')
+FileNotFoundError: [Errno 2] No such file or directory: 'leds.json'
+2022-01-25 14:45:06,482 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-01-25 14:45:07,952 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -119,10 +113,10 @@ Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
   File "C:\Led-Lights\webApp\app\routes.py", line 111, in index
-    f = open('server/routes/leds.json')
-FileNotFoundError: [Errno 2] No such file or directory: 'server/routes/leds.json'
-2022-01-24 15:00:51,042 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-24 15:00:52,071 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+    f = open('leds.json')
+FileNotFoundError: [Errno 2] No such file or directory: 'leds.json'
+2022-01-25 14:45:29,796 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-01-25 14:45:30,802 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -138,7 +132,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 111, in index
-    f = open('Led-Lights/server/routes/leds.json')
-FileNotFoundError: [Errno 2] No such file or directory: 'Led-Lights/server/routes/leds.json'
-2022-01-24 15:01:10,637 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+  File "C:\Led-Lights\webApp\app\routes.py", line 115, in index
+    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, posts4 = posts4)
+NameError: name 'posts4' is not defined
+2022-01-25 14:45:56,321 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-01-25 15:01:11,083 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]

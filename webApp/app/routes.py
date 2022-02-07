@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db #importing the app variable (right) defined in the app package (left)
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek, EditSchedule
 from app.models import User
 import requests
 import json
@@ -247,6 +247,35 @@ def date():
 @login_required
 def dayofweek():
     form = DayOfWeek(current_user.username)
+    if form.validate_on_submit():
+        URL_post = "http://192.168.4.50:3000/leds/1/scenes"
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        day_of_week = form.day_of_week.data
+        start_time = form.start_time.data
+
+        data_post = {
+            "color": "ff" + color,
+            "brightness": brightness,
+            "mode": mode,
+            "day_of_week": day_of_week,
+            "start_time": "1900-01-01T" + start_time + ":00.000"}
+
+        post_dumps = json.dumps(data_post)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.post(URL_post, json = data_post)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    return render_template('dayofweek.html', title='Day of Week', form=form)
+
+@app.route('/editschedule', methods=['GET', 'POST'])
+@login_required
+def editschedule():
+    form = EditSchedule(current_user.username)
     if form.validate_on_submit():
         URL_post = "http://192.168.4.50:3000/leds/1/scenes"
 
