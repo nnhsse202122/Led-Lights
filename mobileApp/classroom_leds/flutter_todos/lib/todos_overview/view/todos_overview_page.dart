@@ -14,7 +14,8 @@ class TodosOverviewPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => TodosOverviewBloc(
         todosRepository: context.read<TodosRepository>(),
-      )..add(const TodosOverviewSubscriptionRequested()),
+      )..add(
+          const TodosOverviewSubscriptionRequested()), //.fetch instead of .add
       child: const TodosOverviewView(),
     );
   }
@@ -86,6 +87,7 @@ class TodosOverviewView extends StatelessWidget {
           builder: (context, state) {
             if (state.todos.isEmpty) {
               if (state.status == TodosOverviewStatus.loading) {
+                //change to check the type
                 return const Center(child: CupertinoActivityIndicator());
               } else if (state.status != TodosOverviewStatus.success) {
                 return const SizedBox();
