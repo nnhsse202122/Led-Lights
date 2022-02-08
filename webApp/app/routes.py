@@ -272,29 +272,38 @@ def dayofweek():
         return redirect(url_for('index'))
     return render_template('dayofweek.html', title='Day of Week', form=form)
 
-@app.route('/editschedule', methods=['GET', 'POST'])
+@app.route('/editschedule/<id>', methods=['GET', 'POST'])
 @login_required
-def editschedule():
+def editschedule(id):
     form = EditSchedule(current_user.username)
     if form.validate_on_submit():
-        URL_post = "http://192.168.4.50:3000/leds/1/scenes"
+        URL_put = "https://classroomleds.nnhsse.org/leds/1/scenes/{id}"
+
 
         color = form.color.data
         brightness = form.brightness.data
         mode = form.mode.data
-        day_of_week = form.day_of_week.data
         start_time = form.start_time.data
 
-        data_post = {
+        r = requests.get("https://classroomleds.nnhsse.org/leds/1")
+        data = r.json()
+        data_dumps = json.dumps(data)
+        dataDict = json.loads(data_dumps)['scenes']
+        for i in dataDict:
+                if id in i.values():
+                    currentDict = i
+
+        data_put = {
+            "id": id,
             "color": "ff" + color,
             "brightness": brightness,
             "mode": mode,
-            "day_of_week": day_of_week,
+            "day_of_week": currentDict.day_of_week,
             "start_time": "1900-01-01T" + start_time + ":00.000"}
 
-        post_dumps = json.dumps(data_post)
+        post_dumps = json.dumps(data_put)
         post_dict = json.loads(post_dumps)
-        r_post = requests.post(URL_post, json = data_post)
+        r_post = requests.put(URL_put, json = data_put)
 
         db.session.commit()
         flash('Your changes have been saved.')
