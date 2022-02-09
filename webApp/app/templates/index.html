@@ -51,7 +51,7 @@
             <td>{{ scene.brightness }}</td>    
             <td>{{ scene.mode }}</td>
             <td>{{ scene.start_time }}</td>
-            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id) }}">Edit</a></td>
+            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id, day=scene.day_of_week) }}">Edit</a></td>
         </tr>
     {% endif %}
     {% endfor %}
@@ -63,7 +63,7 @@
             <td>{{ scene.brightness }}</td>    
             <td>{{ scene.mode }}</td>
             <td>{{ scene.start_time }}</td>
-            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id) }}">Edit</a></td>
+            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id, day=scene.day_of_week) }}">Edit</a></td>
         </tr>
     {% endif %}
     {% endfor %}
@@ -75,7 +75,7 @@
             <td>{{ scene.brightness }}</td>    
             <td>{{ scene.mode }}</td>
             <td>{{ scene.start_time }}</td>
-            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id) }}">Edit</a></td>
+            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id, day=scene.day_of_week) }}">Edit</a></td>
         </tr>
     {% endif %}
     {% endfor %}
@@ -87,7 +87,7 @@
             <td>{{ scene.brightness }}</td>    
             <td>{{ scene.mode }}</td>
             <td>{{ scene.start_time }}</td>
-            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id) }}">Edit</a></td>        
+            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id, day=scene.day_of_week) }}">Edit</a></td>        
         </tr>
     {% endif %}
     {% endfor %}
@@ -99,7 +99,7 @@
             <td>{{ scene.brightness }}</td>    
             <td>{{ scene.mode }}</td>
             <td>{{ scene.start_time }}</td>
-            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id) }}">Edit</a></td>
+            <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule', id=scene.id, day=scene.day_of_week) }}">Edit</a></td>
         </tr>
     {% endif %}
     {% endfor %}

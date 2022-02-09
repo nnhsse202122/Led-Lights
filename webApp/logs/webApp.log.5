@@ -1,51 +1,22 @@
-2022-01-25 15:01:15,437 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+2022-01-31 15:09:12,699 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 170, in _new_conn
-    (self._dns_host, self.port), self.timeout, **extra_kw
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\util\connection.py", line 96, in create_connection
-    raise err
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\util\connection.py", line 86, in create_connection
-    sock.connect(sa)
-ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connectionpool.py", line 706, in urlopen
-    chunked=chunked,
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connectionpool.py", line 394, in _make_request
-    conn.request(method, url, **httplib_request_kw)
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 234, in request
-    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
-  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 1229, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 1275, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 1224, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 1016, in _send_output
-    self.send(msg)
-  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 956, in send
-    self.connect()
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 200, in connect
-    conn = self._new_conn()
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 182, in _new_conn
-    self, "Failed to establish a new connection: %s" % e
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x05261750>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\adapters.py", line 449, in send
-    timeout=timeout
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connectionpool.py", line 756, in urlopen
-    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
-  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\util\retry.py", line 574, in increment
-    raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.4.50', port=3000): Max retries exceeded with url: /leds/1/scenes (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x05261750>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
-
-During handling of the above exception, another exception occurred:
-
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1948, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2242, in preprocess_request
+    rv = func()
+  File "C:\Led-Lights\webApp\app\routes.py", line 19, in before_request
+    current_user.last_seen = datetime.utcnow()
+AttributeError: module 'datetime' has no attribute 'utcnow'
+2022-01-31 15:10:08,001 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-01-31 15:10:09,082 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -61,21 +32,12 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 113, in index
-    get = requests.get(url = "http://192.168.4.50:3000/leds/1/scenes")
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\api.py", line 76, in get
-    return request('get', url, params=params, **kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\api.py", line 61, in request
-    return session.request(method=method, url=url, **kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 542, in request
-    resp = self.send(prep, **send_kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 655, in send
-    r = adapter.send(request, **kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\adapters.py", line 516, in send
-    raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPConnectionPool(host='192.168.4.50', port=3000): Max retries exceeded with url: /leds/1/scenes (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x05261750>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
-2022-01-25 15:03:17,013 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-25 15:03:19,428 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+  File "C:\Led-Lights\webApp\app\routes.py", line 120, in index
+    sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
+2022-02-01 14:36:10,511 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-03 14:32:28,662 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-03 14:32:38,972 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -91,22 +53,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 113, in index
-    get = requests.get(url = "127.0.0.1:5000/leds/1/scenes")
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\api.py", line 76, in get
-    return request('get', url, params=params, **kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\api.py", line 61, in request
-    return session.request(method=method, url=url, **kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 542, in request
-    resp = self.send(prep, **send_kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 649, in send
-    adapter = self.get_adapter(url=request.url)
-  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 742, in get_adapter
-    raise InvalidSchema("No connection adapters were found for {!r}".format(url))
-requests.exceptions.InvalidSchema: No connection adapters were found for '127.0.0.1:5000/leds/1/scenes'
-2022-01-27 14:51:35,240 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-27 15:00:06,348 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-27 15:00:08,395 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+  File "C:\Led-Lights\webapp\app\routes.py", line 122, in index
+    sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
+TypeError: descriptor 'time' requires a 'datetime.datetime' object but received a 'int'
+2022-02-03 14:34:09,625 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-03 14:34:10,813 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -122,8 +73,15 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 114, in index
-    dataDict = json.loads(data)
-  File "C:\Program Files (x86)\Python37-32\lib\json\__init__.py", line 341, in loads
-    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
-TypeError: the JSON object must be str, bytes or bytearray, not dict
+  File "C:\Led-Lights\webapp\app\routes.py", line 120, in index
+    sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
+2022-02-03 14:36:35,246 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-03 14:38:40,239 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-03 14:55:33,681 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-03 15:02:43,628 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-04 14:22:52,191 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-04 15:01:21,802 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-04 15:02:47,116 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-07 14:45:31,067 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-07 14:45:38,942 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]

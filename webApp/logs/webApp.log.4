@@ -1,4 +1,4 @@
-2022-01-27 15:02:47,382 ERROR: Exception on /index [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+2022-02-07 14:45:49,725 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,88 +14,47 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 114, in index
-    data_dumps = json.dumps(data)
-  File "C:\Program Files (x86)\Python37-32\lib\json\__init__.py", line 341, in loads
-    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
-TypeError: the JSON object must be str, bytes or bytearray, not dict
-2022-01-27 15:02:56,357 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-27 15:04:51,691 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-27 15:06:59,650 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:22:59,066 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:29:19,447 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:32:54,446 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:36:10,301 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:40:15,726 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:42:33,407 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:43:46,023 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:45:00,126 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:45:36,963 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:47:32,098 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:52:03,400 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:52:36,390 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:52:43,860 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:54:08,802 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:59:40,497 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 14:59:50,997 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 15:00:46,423 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 15:01:22,867 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 15:01:30,673 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 15:02:09,485 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-28 15:02:11,898 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
-Traceback (most recent call last):
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 118, in index
+  File "C:\Led-Lights\webapp\app\routes.py", line 125, in index
     return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, dataDict = dataDict)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\templating.py", line 138, in render_template
-    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 930, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 883, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 857, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\loaders.py", line 127, in load
-    code = environment.compile(source, name, filename)
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 638, in compile
-    self.handle_exception(source=source_hint)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
   File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
     reraise(*rewrite_traceback_stack(source=source))
   File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
     raise value.with_traceback(tb)
-  File "C:\Led-Lights\webApp\app\templates\index.html", line 46, in template
-    <td>{{ scene.brightness }} {{  }} {{  }} {{  }} {{  }} </td>
-jinja2.exceptions.TemplateSyntaxError: Expected an expression, got 'end of print statement'
-2022-01-28 15:02:23,770 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:28:20,927 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:38:22,241 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:39:07,189 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:39:59,261 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:40:44,203 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:42:36,986 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:43:33,569 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:43:36,339 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:46:30,514 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:50:38,864 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:53:28,226 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:54:26,137 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:55:21,001 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 14:57:32,813 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 15:08:04,824 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-01-31 15:08:05,901 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+  File "C:\Led-Lights\webapp\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Led-Lights\webapp\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Led-Lights\webapp\app\templates\base.html", line 47, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Led-Lights\webapp\app\templates\index.html", line 54, in block "app_content"
+    <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule') }}">Edit</a></td>
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\led-lights\webapp\venv\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'editschedule'. Did you mean 'editschdule' instead?
+2022-02-07 14:47:10,414 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-07 14:47:13,207 ERROR: Exception on /editschedule [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -111,7 +70,32 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 119, in index
-    sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
-AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
-2022-01-31 15:09:10,523 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+  File "C:\Led-Lights\webapp\app\routes.py", line 278, in editschedule
+    form = EditSchedule(current_user.username)
+  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Led-Lights\webapp\app\forms.py", line 89, in __init__
+    super(Date, self).__init__(*args, **kwargs)
+TypeError: super(type, obj): obj must be an instance or subtype of type
+2022-02-07 14:48:08,893 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-07 14:51:12,143 ERROR: Exception on /editschedule [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 285, in editschedule
+    day_of_week = form.day_of_week.data
+AttributeError: 'EditSchedule' object has no attribute 'day_of_week'
+2022-02-08 14:24:12,273 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-08 14:43:11,826 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
