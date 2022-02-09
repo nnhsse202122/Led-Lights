@@ -274,7 +274,7 @@ def dayofweek():
 
 @app.route('/editschedule/<id>', methods=['GET', 'POST'])
 @login_required
-def editschedule(id, day):
+def editschedule(id):
     form = EditSchedule(current_user.username)
     if form.validate_on_submit():
         URL_put = "https://classroomleds.nnhsse.org/leds/1/scenes/{id}"
@@ -295,7 +295,7 @@ def editschedule(id, day):
             "color": "ff" + color,
             "brightness": brightness,
             "mode": mode,
-            "day_of_week": day,
+            "day_of_week": ,
             "start_time": "1900-01-01T" + start_time + ":00.000"}
 
         post_dumps = json.dumps(data_put)

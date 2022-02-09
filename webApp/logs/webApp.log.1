@@ -1,4 +1,4 @@
-2022-02-07 14:45:49,725 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+2022-02-08 14:44:24,872 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -41,7 +41,7 @@ Traceback (most recent call last):
   File "C:\Led-Lights\webapp\app\templates\base.html", line 47, in block "content"
     {% block app_content %}{% endblock %}
   File "C:\Led-Lights\webapp\app\templates\index.html", line 54, in block "app_content"
-    <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule') }}">Edit</a></td>
+    <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule/{{ scene.id }}') }}">Edit</a></td>
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\helpers.py", line 370, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
@@ -52,9 +52,12 @@ Traceback (most recent call last):
     endpoint, values, method=method, force_external=external
   File "c:\led-lights\webapp\venv\lib\site-packages\werkzeug\routing.py", line 2179, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'editschedule'. Did you mean 'editschdule' instead?
-2022-02-07 14:47:10,414 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
-2022-02-07 14:47:13,207 ERROR: Exception on /editschedule [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+werkzeug.routing.BuildError: Could not build url for endpoint 'editschedule/{{ scene.id }}'. Did you mean 'editschedule' instead?
+2022-02-08 14:50:38,802 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-08 14:51:52,320 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-08 15:10:09,237 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-08 15:10:15,118 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-08 15:10:56,889 ERROR: Exception on /editschedule/1 [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -70,15 +73,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webapp\app\routes.py", line 278, in editschedule
-    form = EditSchedule(current_user.username)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\form.py", line 208, in __call__
-    return type.__call__(cls, *args, **kwargs)
-  File "C:\Led-Lights\webapp\app\forms.py", line 89, in __init__
-    super(Date, self).__init__(*args, **kwargs)
-TypeError: super(type, obj): obj must be an instance or subtype of type
-2022-02-07 14:48:08,893 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
-2022-02-07 14:51:12,143 ERROR: Exception on /editschedule [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+  File "C:\Led-Lights\webapp\app\routes.py", line 301, in editschedule
+    "day_of_week": currentDict.day_of_week,
+UnboundLocalError: local variable 'currentDict' referenced before assignment
+2022-02-09 14:26:04,243 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-09 14:29:55,888 ERROR: Exception on /editschedule/1 [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -94,8 +93,48 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webapp\app\routes.py", line 285, in editschedule
-    day_of_week = form.day_of_week.data
-AttributeError: 'EditSchedule' object has no attribute 'day_of_week'
-2022-02-08 14:24:12,273 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
-2022-02-08 14:43:11,826 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+  File "C:\Led-Lights\webapp\app\routes.py", line 301, in editschedule
+    "day_of_week": currentDict.day_of_week,
+UnboundLocalError: local variable 'currentDict' referenced before assignment
+2022-02-09 14:32:00,280 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-09 14:32:29,647 ERROR: Exception on /editschedule/1 [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 301, in editschedule
+    "day_of_week": currentDict.day_of_week,
+UnboundLocalError: local variable 'currentDict' referenced before assignment
+2022-02-09 14:40:34,828 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-09 14:40:58,447 ERROR: Exception on /editschedule/1 [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 301, in editschedule
+    "day_of_week": currentScene.day_of_week,
+UnboundLocalError: local variable 'currentScene' referenced before assignment
+2022-02-09 14:45:09,408 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-09 14:48:52,124 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
