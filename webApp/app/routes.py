@@ -284,6 +284,7 @@ def editschedule(id):
         brightness = form.brightness.data
         mode = form.mode.data
         start_time = form.start_time.data
+        day = form.day_of_week.data
 
         r = requests.get("https://classroomleds.nnhsse.org/leds/1")
         data = r.json()
@@ -295,7 +296,7 @@ def editschedule(id):
             "color": "ff" + color,
             "brightness": brightness,
             "mode": mode,
-            "day_of_week": ,
+            "day_of_week": day,
             "start_time": "1900-01-01T" + start_time + ":00.000"}
 
         post_dumps = json.dumps(data_put)
