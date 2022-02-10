@@ -290,6 +290,9 @@ def editschedule(id):
         data = r.json()
         data_dumps = json.dumps(data)
         dataDict = json.loads(data_dumps)['scenes']
+        currentScene = dataDict[id]
+
+        form.color.data = currentScene["color"]
 
         data_put = {
             "id": id,
