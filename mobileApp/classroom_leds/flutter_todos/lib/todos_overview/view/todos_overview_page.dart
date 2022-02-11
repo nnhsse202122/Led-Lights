@@ -12,10 +12,7 @@ class TodosOverviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TodosOverviewBloc(
-        todosRepository: context.read<TodosRepository>(),
-      )..add(
-          const TodosOverviewSubscriptionRequested()), //.fetch instead of .add
+      create: (context) => ScenesCubit()..fetchScenes(),
       child: const TodosOverviewView(),
     );
   }
@@ -31,104 +28,39 @@ class TodosOverviewView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.todosOverviewAppBarTitle),
-        actions: const [
-          TodosOverviewFilterButton(),
-          TodosOverviewOptionsButton(),
-        ],
       ),
       body: MultiBlocListener(
         listeners: [
-          BlocListener<TodosOverviewBloc, TodosOverviewState>(
-            listenWhen: (previous, current) =>
-                previous.status != current.status,
+          BlocListener<ScenesCubit, ScenesState>(
             listener: (context, state) {
-              if (state.status == TodosOverviewStatus.failure) {
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    SnackBar(
-                      content: Text(l10n.todosOverviewErrorSnackbarText),
-                    ),
-                  );
+              if (state is ScenesLoading) {
+                print('loading state...');
+              } else if (state is ScenesPopulated) {
+                print('scenes loaded!');
               }
-            },
-          ),
-          BlocListener<TodosOverviewBloc, TodosOverviewState>(
-            listenWhen: (previous, current) =>
-                previous.lastDeletedTodo != current.lastDeletedTodo &&
-                current.lastDeletedTodo != null,
-            listener: (context, state) {
-              final deletedTodo = state.lastDeletedTodo!;
-              final messenger = ScaffoldMessenger.of(context);
-              messenger
-                ..hideCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      l10n.todosOverviewTodoDeletedSnackbarText(
-                        deletedTodo.title,
-                      ),
-                    ),
-                    action: SnackBarAction(
-                      label: l10n.todosOverviewUndoDeletionButtonText,
-                      onPressed: () {
-                        messenger.hideCurrentSnackBar();
-                        context
-                            .read<TodosOverviewBloc>()
-                            .add(const TodosOverviewUndoDeletionRequested());
-                      },
-                    ),
-                  ),
-                );
             },
           ),
         ],
-        child: BlocBuilder<TodosOverviewBloc, TodosOverviewState>(
+        child: BlocBuilder<ScenesCubit, ScenesState>(
           builder: (context, state) {
-            if (state.todos.isEmpty) {
-              if (state.status == TodosOverviewStatus.loading) {
-                //change to check the type
-                return const Center(child: CupertinoActivityIndicator());
-              } else if (state.status != TodosOverviewStatus.success) {
-                return const SizedBox();
-              } else {
-                return Center(
-                  child: Text(
-                    l10n.todosOverviewEmptyText,
-                    style: Theme.of(context).textTheme.caption,
-                  ),
-                );
-              }
+            if (state is ScenesLoading) {
+              //change to check the type
+              return const Center(child: CupertinoActivityIndicator());
+            } else if (state is ScenesPopulated) {
+              return Center(
+                child: Text(
+                  'current scene data', // TODO: how to get scene object from state???
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              );
+            } else {
+              return Center(
+                child: Text(
+                  l10n.todosOverviewEmptyText,
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              );
             }
-
-            return CupertinoScrollbar(
-              child: ListView(
-                children: [
-                  for (final todo in state.filteredTodos)
-                    TodoListTile(
-                      todo: todo,
-                      onToggleCompleted: (isCompleted) {
-                        context.read<TodosOverviewBloc>().add(
-                              TodosOverviewTodoCompletionToggled(
-                                todo: todo,
-                                isCompleted: isCompleted,
-                              ),
-                            );
-                      },
-                      onDismissed: (_) {
-                        context
-                            .read<TodosOverviewBloc>()
-                            .add(TodosOverviewTodoDeleted(todo));
-                      },
-                      onTap: () {
-                        Navigator.of(context).push(
-                          EditTodoPage.route(initialTodo: todo),
-                        );
-                      },
-                    ),
-                ],
-              ),
-            );
           },
         ),
       ),

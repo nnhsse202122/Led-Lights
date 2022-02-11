@@ -1,9 +1,5 @@
 part of 'scenes_cubit.dart';
 
-class Scene {
-  //to import
-}
-
 abstract class ScenesState extends Equatable {
   const ScenesState();
 
