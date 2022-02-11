@@ -115,7 +115,7 @@ def index():
     dataDict = json.loads(data_dumps)['scenes']
     #print(dataDict)
 
-#appending date strings to only be the time
+    #appending date strings to only be the time
     for i in dataDict:
         sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
         sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
@@ -277,12 +277,16 @@ def dayofweek():
 def editschedule(id):
     form = EditSchedule(current_user.username)
 
+    # GET request to access current JSON data
     r = requests.get("https://classroomleds.nnhsse.org/leds/1")
     data = r.json()
     data_dumps = json.dumps(data)
     dataDict = json.loads(data_dumps)['scenes']
+
+    #currentScene = the scene which is being edited by user
     currentScene = dataDict[int(id)-1]
 
+    #format the date to fit the text field properly
     sch_date = datetime.datetime.strptime(currentScene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
     sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
     currentScene["start_time"] = sch_time
@@ -294,7 +298,7 @@ def editschedule(id):
     form.day_of_week.data = currentScene["day_of_week"]
 
     if form.validate_on_submit():
-        URL_put = "https://classroomleds.nnhsse.org/leds/1/scenes/{id}"
+        URL_put = "https://classroomleds.nnhsse.org/leds/1/scenes/{}".format(id)
 
 
         color = form.color.data
@@ -310,7 +314,7 @@ def editschedule(id):
             "brightness": brightness,
             "mode": mode,
             "day_of_week": day,
-            "start_time": "1900-01-01T" + start_time + ":00.000"}
+            "start_time": "1900-01-01T" + str(start_time) + ":00.000"}
 
         post_dumps = json.dumps(data_put)
         post_dict = json.loads(post_dumps)
