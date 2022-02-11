@@ -276,6 +276,23 @@ def dayofweek():
 @login_required
 def editschedule(id):
     form = EditSchedule(current_user.username)
+
+    r = requests.get("https://classroomleds.nnhsse.org/leds/1")
+    data = r.json()
+    data_dumps = json.dumps(data)
+    dataDict = json.loads(data_dumps)['scenes']
+    currentScene = dataDict[int(id)-1]
+
+    sch_date = datetime.datetime.strptime(currentScene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+    sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
+    currentScene["start_time"] = sch_time
+
+    form.color.data = currentScene["color"][2:]
+    form.brightness.data = currentScene["brightness"]
+    form.mode.data = currentScene["mode"]
+    form.start_time.data = currentScene["start_time"]
+    form.day_of_week.data = currentScene["day_of_week"]
+
     if form.validate_on_submit():
         URL_put = "https://classroomleds.nnhsse.org/leds/1/scenes/{id}"
 
@@ -286,14 +303,7 @@ def editschedule(id):
         start_time = form.start_time.data
         day = form.day_of_week.data
 
-        r = requests.get("https://classroomleds.nnhsse.org/leds/1")
-        data = r.json()
-        data_dumps = json.dumps(data)
-        dataDict = json.loads(data_dumps)['scenes']
-        currentScene = dataDict[id]
-
-        form.color.data = currentScene["color"]
-
+        
         data_put = {
             "id": id,
             "color": "ff" + color,
