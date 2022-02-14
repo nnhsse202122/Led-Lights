@@ -196,14 +196,14 @@ def override():
         brightness = form.brightness.data
         mode = form.mode.data
         override_duration = form.override_duration.data
-        start_time = form.start_time.data
+        start_time1 = form.start_time.data
 
         data_post = {
             "color": "ff" + color,
             "brightness": brightness,
             "mode": mode,
             "override_duration": override_duration,
-            "start_time": "1900-01-01T" + start_time + ":00.000"}        
+            "start_time": "1900-01-01T" + start_time1 + ":00.000"}        
         
         post_dumps = json.dumps(data_post)
         post_dict = json.loads(post_dumps)
@@ -314,7 +314,7 @@ def editschedule(id):
             "brightness": brightness,
             "mode": mode,
             "day_of_week": day,
-            "start_time": "1900-01-01T" + str(start_time) + ":00.000"}
+            "start_time": "1900-01-01T" + start_time + ":00.000"}
 
         post_dumps = json.dumps(data_put)
         post_dict = json.loads(post_dumps)
