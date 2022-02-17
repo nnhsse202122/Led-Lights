@@ -42,7 +42,7 @@ Future<List<Scene>> fetchScenesFromServer() async {
   // then parse the JSON.
   final List<Scene> sceneList = (json
       .decode(jsonString)['scenes']
-      .map((dynamic i) => Scene.fromJson(i as Map<String, dynamic>))
+      .map<Scene>((dynamic i) => Scene.fromJson(i as Map<String, dynamic>))
       .toList() as List<Scene>);
 
   // print(json.decode(testJSON)['scenes']);
