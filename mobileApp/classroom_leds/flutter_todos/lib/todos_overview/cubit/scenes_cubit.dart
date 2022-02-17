@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_todos/todos_overview/models/scene.dart';
 import 'package:flutter_todos/todos_overview/repository/server_util.dart';
 
@@ -12,9 +13,14 @@ class ScenesCubit extends Cubit<ScenesState> {
     emit(ScenesLoading());
 
     //api calls
-    List<Scene> scenes = await fetchScenesFromServer();
+    final randomColor = Color.fromARGB(255, 29, 106, 184);
+
+    var newState = new ScenesPopulated();
+    newState.scenes = [Scene(10, DateTime.now(), randomColor, 'solid', false)];
+
+    //await fetchScenesFromServer();
 
     // TODO: pass scenes to state???
-    emit(ScenesPopulated());
+    emit(newState);
   }
 }

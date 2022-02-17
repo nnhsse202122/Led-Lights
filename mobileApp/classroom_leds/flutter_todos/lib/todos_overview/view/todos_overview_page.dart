@@ -44,13 +44,33 @@ class TodosOverviewView extends StatelessWidget {
         child: BlocBuilder<ScenesCubit, ScenesState>(
           builder: (context, state) {
             if (state is ScenesLoading) {
-              //change to check the type
               return const Center(child: CupertinoActivityIndicator());
             } else if (state is ScenesPopulated) {
-              return Center(
-                child: Text(
-                  'current scene data', // TODO: how to get scene object from state???
-                  style: Theme.of(context).textTheme.caption,
+              return CupertinoScrollbar(
+                child: ListView(
+                  children: [
+                    for (final individualScene in state.scenes)
+                      TodoListTile(scene: individualScene
+                          // onToggleCompleted: (isCompleted) {
+                          //   context.read<TodosOverviewBloc>().add(
+                          //         TodosOverviewTodoCompletionToggled(
+                          //           scene: scene,
+                          //           isCompleted: isCompleted,
+                          //         ),
+                          //       );
+                          // },
+                          // onDismissed: (_) {
+                          //   context
+                          //       .read<TodosOverviewBloc>()
+                          //       .add(TodosOverviewTodoDeleted(scene));
+                          // },
+                          // onTap: () {
+                          //   Navigator.of(context).push(
+                          //     EditTodoPage.route(initialTodo: todo),
+                          //   );
+                          // },
+                          ),
+                  ],
                 ),
               );
             } else {
