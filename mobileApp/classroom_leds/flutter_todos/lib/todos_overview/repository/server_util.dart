@@ -12,8 +12,17 @@ Future<List<Scene>> fetchScenesFromServer() async {
   // final response = await http.get(Uri.parse('$url/leds/1'));
   // print('Response status: ${response.statusCode}');
   // print('Response body: ${response.body}');
-  const testJSON = '''
-      {"id": 1, "scenes": [{"id": 1,"color":"ffff0000","brightness": 1.0,"mode":"solid", "day_of_week": "monday",
+  var jsonString = '''
+  {
+  "id":1,
+	"scenes":
+		[
+			{
+				"id": 1,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T07:39:00.000"
 			},
 			{
@@ -24,21 +33,26 @@ Future<List<Scene>> fetchScenesFromServer() async {
 				"date": "2022-02-15T07:39:00.000",
 				"start_time":"1900-01-01T03:00:00.000"
 			}
-      ]
-      }
-      ''';
+    ]
+  }  
+  ''';
 
   //if (response.statusCode == 200) {
   // If the server did return a 200 OK response,
   // then parse the JSON.
-  final List<Scene> sceneList = json
-      .decode(testJSON)['scenes']
-      .map((Map<String, dynamic> i) => Scene.fromJson(i))
-      .toList() as List<Scene>;
-  print(json.decode(testJSON)['scenes']);
-  sceneList.sort((a, b) {
-    return a.compareTo(b);
-  });
+  final List<Scene> sceneList = (json
+      .decode(jsonString)['scenes']
+      .map((dynamic i) => Scene.fromJson(i as Map<String, dynamic>))
+      .toList() as List<Scene>);
+
+  // print(json.decode(testJSON)['scenes']);
+  // sceneList.sort((a, b) {
+  //   return a.compareTo(b);
+  // });
+
+  //final sceneMap = jsonDecode(jsonString) as Map<String, dynamic>;
+  //var scene = Scene.fromJson(sceneMap);
+
   return sceneList;
   //} else {
   // If the server did not return a 200 OK response,
