@@ -45,13 +45,10 @@ Future<List<Scene>> fetchScenesFromServer() async {
       .map<Scene>((dynamic i) => Scene.fromJson(i as Map<String, dynamic>))
       .toList() as List<Scene>);
 
-  // print(json.decode(testJSON)['scenes']);
-  // sceneList.sort((a, b) {
-  //   return a.compareTo(b);
-  // });
-
-  //final sceneMap = jsonDecode(jsonString) as Map<String, dynamic>;
-  //var scene = Scene.fromJson(sceneMap);
+  print(json.decode(jsonString)['scenes']);
+  sceneList.sort((a, b) {
+    return a.compareTo(b);
+  });
 
   return sceneList;
   //} else {
