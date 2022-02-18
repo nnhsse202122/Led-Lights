@@ -16,11 +16,11 @@ class ScenesLoading extends ScenesState {
 }
 
 class ScenesPopulated extends ScenesState {
-  const ScenesPopulated({
+  ScenesPopulated({
     this.scenes = const [],
   });
 
-  final List<Scene> scenes;
+  List<Scene> scenes;
 
   @override
   List<Object> get props => [scenes];

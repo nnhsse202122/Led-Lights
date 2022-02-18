@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:todos_repository/todos_repository.dart';
+import 'package:flutter_todos/todos_overview/models/scene.dart';
 
 class TodoListTile extends StatelessWidget {
   const TodoListTile({
     Key? key,
-    required this.todo,
+    required this.scene,
     this.onToggleCompleted,
     this.onDismissed,
     this.onTap,
   }) : super(key: key);
 
-  final Todo todo;
+  final Scene scene;
   final ValueChanged<bool>? onToggleCompleted;
   final DismissDirectionCallback? onDismissed;
   final VoidCallback? onTap;
@@ -21,7 +22,7 @@ class TodoListTile extends StatelessWidget {
     final captionColor = theme.textTheme.caption?.color;
 
     return Dismissible(
-      key: Key('todoListTile_dismissible_${todo.id}'),
+      key: Key('todoListTile_dismissible_${scene.id}'),
       onDismissed: onDismissed,
       direction: DismissDirection.endToStart,
       background: Container(
@@ -36,10 +37,10 @@ class TodoListTile extends StatelessWidget {
       child: ListTile(
         onTap: onTap,
         title: Text(
-          todo.title,
+          '${scene.id}', //to update to title
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: !todo.isCompleted
+          style: !scene.isCompleted
               ? null
               : TextStyle(
                   color: captionColor,
@@ -47,7 +48,7 @@ class TodoListTile extends StatelessWidget {
                 ),
         ),
         subtitle: Text(
-          todo.description,
+          '$scene', //to update to description
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -55,7 +56,7 @@ class TodoListTile extends StatelessWidget {
           shape: const ContinuousRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
-          value: todo.isCompleted,
+          value: scene.isCompleted,
           onChanged: onToggleCompleted == null
               ? null
               : (value) => onToggleCompleted!(value!),

@@ -5,15 +5,17 @@ class Scene implements Comparable<Scene> {
   DateTime startTime;
   Color color;
   String mode;
+  bool isCompleted;
 
-  Scene(this.id, this.startTime, this.color, this.mode);
+  Scene(this.id, this.startTime, this.color, this.mode, this.isCompleted);
 
   Scene.fromJson(Map<String, dynamic> json)
       : id = json['id'] as int,
         startTime = DateTime.parse(json['start_time'] as String),
         color = Color(int.parse(json['color'] as String, radix: 16))
             .withAlpha(((json['brightness'] as double) * 255).toInt()),
-        mode = json['mode'] as String;
+        mode = json['mode'] as String,
+        isCompleted = false;
 
   Map<String, dynamic> toJson() {
     return {
