@@ -7,29 +7,55 @@ import 'package:http/http.dart' as http;
 final String url = 'https://classroomLEDs.nnhsse.org'; // "10.0.2.2"
 
 Future<List<Scene>> fetchScenesFromServer() async {
-  print('URL: $url/leds/1');
+  // print('URL: $url/leds/1');
 
-  final response = await http.get(Uri.parse('$url/leds/1'));
-  print('Response status: ${response.statusCode}');
-  print('Response body: ${response.body}');
+  // final response = await http.get(Uri.parse('$url/leds/1'));
+  // print('Response status: ${response.statusCode}');
+  // print('Response body: ${response.body}');
+  var jsonString = '''
+  {
+  "id":1,
+	"scenes":
+		[
+			{
+				"id": 1,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "monday",
+				"start_time":"1900-01-01T07:39:00.000"
+			},
+			{
+				"id": 108,
+				"color":"ffffffff",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"date": "2022-02-15T07:39:00.000",
+				"start_time":"1900-01-01T03:00:00.000"
+			}
+    ]
+  }  
+  ''';
 
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    final List<Scene> sceneList = json
-        .decode(response.body)['scenes']
-        .map((Map<String, dynamic> i) => Scene.fromJson(i))
-        .toList() as List<Scene>;
-    print(json.decode(response.body)['scenes']);
-    sceneList.sort((a, b) {
-      return a.compareTo(b);
-    });
-    return sceneList;
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load LED');
-  }
+  //if (response.statusCode == 200) {
+  // If the server did return a 200 OK response,
+  // then parse the JSON.
+  final List<Scene> sceneList = (json
+      .decode(jsonString)['scenes']
+      .map<Scene>((dynamic i) => Scene.fromJson(i as Map<String, dynamic>))
+      .toList() as List<Scene>);
+
+  print(json.decode(jsonString)['scenes']);
+  sceneList.sort((a, b) {
+    return a.compareTo(b);
+  });
+
+  return sceneList;
+  //} else {
+  // If the server did not return a 200 OK response,
+  // then throw an exception.
+  throw Exception('Failed to load LED');
+  //}
 }
 
 void deleteSceneFromServer(int sceneID) async {
