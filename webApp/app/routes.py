@@ -292,12 +292,10 @@ def editschedule(id):
     form.color.data = currentScene["color"][2:]
     form.brightness.data = currentScene["brightness"]
     form.mode.data = currentScene["mode"]
-
     if sch_date.hour < 10:
         form.start_time.data = "0" + str(sch_date.hour) + ":" + str(sch_date.minute)
     else:
         form.start_time.data = str(sch_date.hour) + ":" + str(sch_date.minute)
-
     form.day_of_week.data = currentScene["day_of_week"]
 
     if form.validate_on_submit():
@@ -318,6 +316,8 @@ def editschedule(id):
             "mode": mode,
             "day_of_week": day,
             "start_time": "1900-01-01T" + start_time + ":00.000"}
+
+        print(data_put)    
 
         post_dumps = json.dumps(data_put)
         post_dict = json.loads(post_dumps)
