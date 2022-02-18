@@ -109,7 +109,7 @@ def index():
         }
     ]
     #CODE RIGHT HERE TO PUT IN DATA
-    r = requests.get("https://classroomleds.nnhsse.org/leds/1")
+    r = requests.get("http://localhost:3000/leds/1")
     data = r.json()
     data_dumps = json.dumps(data)
     dataDict = json.loads(data_dumps)['scenes']
@@ -288,17 +288,20 @@ def editschedule(id):
 
     #format the date to fit the text field properly
     sch_date = datetime.datetime.strptime(currentScene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
-    sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
-    currentScene["start_time"] = sch_time
 
     form.color.data = currentScene["color"][2:]
     form.brightness.data = currentScene["brightness"]
     form.mode.data = currentScene["mode"]
-    form.start_time.data = currentScene["start_time"]
+
+    if sch_date.hour < 10:
+        form.start_time.data = "0" + str(sch_date.hour) + ":" + str(sch_date.minute)
+    else:
+        form.start_time.data = str(sch_date.hour) + ":" + str(sch_date.minute)
+
     form.day_of_week.data = currentScene["day_of_week"]
 
     if form.validate_on_submit():
-        URL_put = "https://classroomleds.nnhsse.org/leds/1/scenes/{}".format(id)
+        URL_put = "http://localhost:3000/leds/1/scenes/{}".format(id)
 
 
         color = form.color.data
