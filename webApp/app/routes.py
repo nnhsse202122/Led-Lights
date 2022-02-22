@@ -11,6 +11,8 @@ import time
 
 #from decimal import Decimal
 
+nodeServer = "http://localhost:3000"
+
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
@@ -277,26 +279,6 @@ def dayofweek():
 def editschedule(id):
     form = EditSchedule(current_user.username)
 
-    # GET request to access current JSON data
-    r = requests.get("https://classroomleds.nnhsse.org/leds/1")
-    data = r.json()
-    data_dumps = json.dumps(data)
-    dataDict = json.loads(data_dumps)['scenes']
-
-    #currentScene = the scene which is being edited by user
-    currentScene = dataDict[int(id)-1]
-
-    #format the date to fit the text field properly
-    sch_date = datetime.datetime.strptime(currentScene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
-
-    form.color.data = currentScene["color"][2:]
-    form.brightness.data = currentScene["brightness"]
-    form.mode.data = currentScene["mode"]
-    if sch_date.hour < 10:
-        form.start_time.data = "0" + str(sch_date.hour) + ":" + str(sch_date.minute)
-    else:
-        form.start_time.data = str(sch_date.hour) + ":" + str(sch_date.minute)
-    form.day_of_week.data = currentScene["day_of_week"]
 
     if form.validate_on_submit():
         URL_put = "http://localhost:3000/leds/1/scenes/{}".format(id)
@@ -326,4 +308,26 @@ def editschedule(id):
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('index'))
+    
+    # GET request to access current JSON data
+    r = requests.get("https://classroomleds.nnhsse.org/leds/1")
+    data = r.json()
+    data_dumps = json.dumps(data)
+    dataDict = json.loads(data_dumps)['scenes']
+
+    #currentScene = the scene which is being edited by user
+    currentScene = dataDict[int(id)-1]
+
+    #format the date to fit the text field properly
+    sch_date = datetime.datetime.strptime(currentScene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+
+    form.color.data = currentScene["color"][2:]
+    form.brightness.data = currentScene["brightness"]
+    form.mode.data = currentScene["mode"]
+    if sch_date.hour < 10:
+        form.start_time.data = "0" + str(sch_date.hour) + ":" + str(sch_date.minute)
+    else:
+        form.start_time.data = str(sch_date.hour) + ":" + str(sch_date.minute)
+    form.day_of_week.data = currentScene["day_of_week"]
+
     return render_template('dayofweek.html', title='Day of Week', form=form)
