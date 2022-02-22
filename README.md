@@ -197,7 +197,7 @@ On startup every time:
 
 * Go to the webApp directory
 * Start the virtual environment: `.\venv\Scripts\activate`
-* Set the FLASK_APP environment variable: `export FLASK_APP=webApp.py`
+* Set the FLASK_APP environment variable: `set FLASK_APP=webApp.py`
 * Run flask: `flask run`
 
 Create raspi server in a separate terminal or on the Raspberry Pi:
