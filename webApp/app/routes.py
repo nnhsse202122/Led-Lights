@@ -12,6 +12,8 @@ import time
 #from decimal import Decimal
 
 nodeServer = "http://localhost:3000"
+realServer = "https://classroomleds.nnhsse.org"
+
 
 @app.before_request
 def before_request():
@@ -111,7 +113,7 @@ def index():
         }
     ]
     #CODE RIGHT HERE TO PUT IN DATA
-    r = requests.get("http://localhost:3000/leds/1")
+    r = requests.get(nodeServer + "/leds/1")
     data = r.json()
     data_dumps = json.dumps(data)
     dataDict = json.loads(data_dumps)['scenes']
@@ -125,6 +127,7 @@ def index():
 
     
     return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, dataDict = dataDict)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): #Figure out which 
@@ -143,10 +146,12 @@ def login(): #Figure out which
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -162,6 +167,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -171,6 +177,7 @@ def user(username):
 #        {'author': user, 'body': 'I\'m scheduling the color, brightness, and pattern of the LEDs!'}
     ]
     return render_template('user.html', user=user, posts=posts)
+
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -186,6 +193,7 @@ def edit_profile():
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
+
 
 @app.route('/override', methods=['GET', 'POST'])
 @login_required
@@ -216,6 +224,7 @@ def override():
         return redirect(url_for('index'))
     return render_template('override.html', title='Override', form=form)
 
+
 @app.route('/date', methods=['GET', 'POST'])
 @login_required
 def date():
@@ -244,6 +253,7 @@ def date():
         flash('Your changes have been saved.')
         return redirect(url_for('index'))
     return render_template('date.html', title='Date', form=form)
+
 
 @app.route('/dayofweek', methods=['GET', 'POST'])
 @login_required
@@ -274,6 +284,7 @@ def dayofweek():
         return redirect(url_for('index'))
     return render_template('dayofweek.html', title='Day of Week', form=form)
 
+
 @app.route('/editschedule/<id>', methods=['GET', 'POST'])
 @login_required
 def editschedule(id):
@@ -281,7 +292,7 @@ def editschedule(id):
 
 
     if form.validate_on_submit():
-        URL_put = "http://localhost:3000/leds/1/scenes/{}".format(id)
+        URL_put = nodeServer + "/leds/1/scenes/{}".format(id)
 
 
         color = form.color.data
@@ -310,7 +321,7 @@ def editschedule(id):
         return redirect(url_for('index'))
     
     # GET request to access current JSON data
-    r = requests.get("https://classroomleds.nnhsse.org/leds/1")
+    r = requests.get(nodeServer + "/leds/1")
     data = r.json()
     data_dumps = json.dumps(data)
     dataDict = json.loads(data_dumps)['scenes']
