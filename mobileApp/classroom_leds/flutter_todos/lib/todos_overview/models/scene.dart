@@ -1,13 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Scene implements Comparable<Scene> {
   final int id;
   DateTime startTime;
   Color color;
   String mode;
+  String day_of_week;
   bool isCompleted;
+  //double duration;
 
-  Scene(this.id, this.startTime, this.color, this.mode, this.isCompleted);
+  Scene(this.id, this.startTime, this.color, this.mode, this.day_of_week,
+      this.isCompleted);
 
   Scene.fromJson(Map<String, dynamic> json)
       : id = json['id'] as int,
@@ -15,7 +20,18 @@ class Scene implements Comparable<Scene> {
         color = Color(int.parse(json['color'] as String, radix: 16))
             .withAlpha(((json['brightness'] as double) * 255).toInt()),
         mode = json['mode'] as String,
+        day_of_week = json['day_of_week'] as String,
         isCompleted = false;
+
+  bool isCurrentScene() {
+    var isCurrent = false;
+    if (this.day_of_week == DateTime.now().weekday) {
+      if (this.startTime == DateFormat.Hms().format(DateTime.now())) {
+        isCurrent = true;
+      }
+    }
+    return isCurrent;
+  }
 
   Map<String, dynamic> toJson() {
     return {

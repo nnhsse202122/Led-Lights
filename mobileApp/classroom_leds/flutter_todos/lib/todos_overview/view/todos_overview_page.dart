@@ -49,27 +49,27 @@ class TodosOverviewView extends StatelessWidget {
               return CupertinoScrollbar(
                 child: ListView(
                   children: [
-                    for (final individualScene in state.scenes)
-                      TodoListTile(scene: individualScene
-                          // onToggleCompleted: (isCompleted) {
-                          //   context.read<TodosOverviewBloc>().add(
-                          //         TodosOverviewTodoCompletionToggled(
-                          //           scene: scene,
-                          //           isCompleted: isCompleted,
-                          //         ),
-                          //       );
-                          // },
-                          // onDismissed: (_) {
-                          //   context
-                          //       .read<TodosOverviewBloc>()
-                          //       .add(TodosOverviewTodoDeleted(scene));
-                          // },
-                          // onTap: () {
-                          //   Navigator.of(context).push(
-                          //     EditTodoPage.route(initialTodo: todo),
-                          //   );
-                          // },
-                          ),
+                    //for (final individualScene in state.scenes)
+                    TodoListTile(scene: state.getCurrentScene()
+                        // onToggleCompleted: (isCompleted) {
+                        //   context.read<TodosOverviewBloc>().add(
+                        //         TodosOverviewTodoCompletionToggled(
+                        //           scene: scene,
+                        //           isCompleted: isCompleted,
+                        //         ),
+                        //       );
+                        // },
+                        // onDismissed: (_) {
+                        //   context
+                        //       .read<TodosOverviewBloc>()
+                        //       .add(TodosOverviewTodoDeleted(scene));
+                        // },
+                        // onTap: () {
+                        //   Navigator.of(context).push(
+                        //     EditTodoPage.route(initialTodo: todo),
+                        //   );
+                        // },
+                        ),
                   ],
                 ),
               );
