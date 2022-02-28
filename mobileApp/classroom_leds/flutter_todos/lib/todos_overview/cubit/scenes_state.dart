@@ -36,6 +36,13 @@ class ScenesPopulated extends ScenesState {
     throw new NullThrownError();
   }
 
+  // Scene getCurrentScene2() {
+  //   Scene currentScene;
+  //   const oneSec = Duration(seconds: 1);
+  //   Timer.periodic(oneSec, (Timer t) => newScene());
+  //   return currentScene;
+  // }
+
   @override
   List<Object> get props => [scenes];
 }

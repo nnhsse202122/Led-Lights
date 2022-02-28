@@ -266,8 +266,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
-<<<<<<< HEAD
-=======
   material:
     dependency: "direct main"
     description:
@@ -275,7 +273,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0+2"
->>>>>>> facb1a212a1fa50428e315a6702a51fcf6074e7e
   material_color_utilities:
     dependency: transitive
     description:
@@ -359,11 +356,7 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "2.0.3"
-=======
     version: "2.0.5"
->>>>>>> facb1a212a1fa50428e315a6702a51fcf6074e7e
   platform:
     dependency: transitive
     description:

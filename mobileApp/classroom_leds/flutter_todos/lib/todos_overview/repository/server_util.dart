@@ -4,14 +4,15 @@ import 'dart:convert';
 import 'package:flutter_todos/todos_overview/models/scene.dart';
 import 'package:http/http.dart' as http;
 
-final String url = 'https://classroomLEDs.nnhsse.org'; // "10.0.2.2"
+final String url = 'http://localhost:3000'; // "10.0.2.2"
 
 Future<List<Scene>> fetchScenesFromServer() async {
-  // print('URL: $url/leds/1');
+  print('URL: $url/leds/1');
 
-  // final response = await http.get(Uri.parse('$url/leds/1'));
-  // print('Response status: ${response.statusCode}');
-  // print('Response body: ${response.body}');
+  final response = await http.get(Uri.parse('$url/leds/1'));
+  print('Response status: ${response.statusCode}');
+  print('Response body: ${response.body}');
+
   var jsonString = '''
   {
   "id":1,
@@ -37,25 +38,25 @@ Future<List<Scene>> fetchScenesFromServer() async {
   }  
   ''';
 
-  //if (response.statusCode == 200) {
-  // If the server did return a 200 OK response,
-  // then parse the JSON.
-  final List<Scene> sceneList = (json
-      .decode(jsonString)['scenes']
-      .map<Scene>((dynamic i) => Scene.fromJson(i as Map<String, dynamic>))
-      .toList() as List<Scene>);
+  if (response.statusCode == 200) {
+    //If the server did return a 200 OK response,
+    //then parse the JSON.
+    final List<Scene> sceneList = (json
+        .decode(response.body)['scenes']
+        .map<Scene>((dynamic i) => Scene.fromJson(i as Map<String, dynamic>))
+        .toList() as List<Scene>);
 
-  print(json.decode(jsonString)['scenes']);
-  sceneList.sort((a, b) {
-    return a.compareTo(b);
-  });
+    print(json.decode(response.body)['scenes']);
+    sceneList.sort((a, b) {
+      return a.compareTo(b);
+    });
 
-  return sceneList;
-  //} else {
-  // If the server did not return a 200 OK response,
-  // then throw an exception.
-  throw Exception('Failed to load LED');
-  //}
+    return sceneList;
+  } else {
+    //If the server did not return a 200 OK response,
+    //then throw an exception.
+    throw Exception('Failed to load LED');
+  }
 }
 
 void deleteSceneFromServer(int sceneID) async {
