@@ -1,121 +1,129 @@
-2021-05-15 12:01:47,677 ERROR: Exception on /override [POST] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2022-01-25 15:01:15,437 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 182, in override
-    "brightness": json.dumps(Decimal(brightness)),
-  File "/usr/lib/python3.7/json/__init__.py", line 231, in dumps
-    return _default_encoder.encode(obj)
-  File "/usr/lib/python3.7/json/encoder.py", line 199, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-  File "/usr/lib/python3.7/json/encoder.py", line 257, in iterencode
-    return _iterencode(o, 0)
-  File "/usr/lib/python3.7/json/encoder.py", line 179, in default
-    raise TypeError(f'Object of type {o.__class__.__name__} '
-TypeError: Object of type Decimal is not JSON serializable
-2021-05-15 12:02:34,409 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 12:02:54,625 ERROR: Exception on /override [POST] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 170, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\util\connection.py", line 96, in create_connection
+    raise err
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\util\connection.py", line 86, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 182, in override
-    "brightness": json.dumps(Decimal(brightness), use_decimal=True),
-  File "/usr/lib/python3.7/json/__init__.py", line 238, in dumps
-    **kw).encode(obj)
-TypeError: __init__() got an unexpected keyword argument 'use_decimal'
-2021-05-15 12:04:37,042 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 12:05:00,128 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:25:26,101 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:32:57,214 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:33:49,008 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:34:16,828 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:34:40,030 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:35:01,590 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:35:24,234 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:35:45,639 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:35:59,377 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:36:30,713 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:37:10,114 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:37:36,055 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 15:39:02,404 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:02:43,336 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:04:15,344 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:05:23,159 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:06:01,029 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:07:26,459 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:07:30,453 ERROR: Exception on /user/Bill [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connectionpool.py", line 706, in urlopen
+    chunked=chunked,
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connectionpool.py", line 394, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 234, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Program Files (x86)\Python37-32\lib\http\client.py", line 956, in send
+    self.connect()
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 200, in connect
+    conn = self._new_conn()
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 182, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x05261750>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 159, in user
-    return render_template('user.html', user=user, posts=posts)
-NameError: name 'posts' is not defined
-2021-05-15 16:07:41,983 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:08:34,506 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:09:43,104 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:10:05,860 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 16:10:55,381 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 23:02:19,614 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-15 23:20:56,337 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-16 00:08:24,976 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-16 00:09:27,993 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-16 10:56:29,758 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-16 11:11:16,011 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-16 11:11:38,580 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-16 11:12:02,180 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-16 11:12:37,242 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-16 11:12:52,893 ERROR: Exception on /date [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connectionpool.py", line 756, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\util\retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.4.50', port=3000): Max retries exceeded with url: /leds/1/scenes (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x05261750>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
     raise value
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 228, in date
-    form = Date(current_user.username)
-NameError: name 'Date' is not defined
+  File "C:\Led-Lights\webApp\app\routes.py", line 113, in index
+    get = requests.get(url = "http://192.168.4.50:3000/leds/1/scenes")
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\api.py", line 76, in get
+    return request('get', url, params=params, **kwargs)
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='192.168.4.50', port=3000): Max retries exceeded with url: /leds/1/scenes (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x05261750>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2022-01-25 15:03:17,013 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-01-25 15:03:19,428 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webApp\app\routes.py", line 113, in index
+    get = requests.get(url = "127.0.0.1:5000/leds/1/scenes")
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\api.py", line 76, in get
+    return request('get', url, params=params, **kwargs)
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 649, in send
+    adapter = self.get_adapter(url=request.url)
+  File "c:\led-lights\webapp\venv\lib\site-packages\requests\sessions.py", line 742, in get_adapter
+    raise InvalidSchema("No connection adapters were found for {!r}".format(url))
+requests.exceptions.InvalidSchema: No connection adapters were found for '127.0.0.1:5000/leds/1/scenes'
+2022-01-27 14:51:35,240 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-01-27 15:00:06,348 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-01-27 15:00:08,395 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webApp\app\routes.py", line 114, in index
+    dataDict = json.loads(data)
+  File "C:\Program Files (x86)\Python37-32\lib\json\__init__.py", line 341, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not dict
