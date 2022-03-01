@@ -124,6 +124,8 @@ def index():
         sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
         sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
         i["start_time"] = sch_time
+        i["color"] = "#" + i["color"][2:]
+    
 
     
     return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, dataDict = dataDict)
