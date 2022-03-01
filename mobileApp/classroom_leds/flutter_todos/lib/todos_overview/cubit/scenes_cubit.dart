@@ -18,9 +18,8 @@ class ScenesCubit extends Cubit<ScenesState> {
     final randomColor = Color.fromARGB(255, 29, 106, 184);
 
     var newState = new ScenesPopulated();
-    newState.scenes = //[Scene(10, DateTime.now(), randomColor, 'solid', false)];
-
-        await fetchScenesFromServer();
+    newState.scenes = await fetchScenesFromServer();
+    //[Scene(10, DateTime.now(), randomColor, 'solid', false)];
 
     // TODO: pass scenes to state???
     emit(newState);

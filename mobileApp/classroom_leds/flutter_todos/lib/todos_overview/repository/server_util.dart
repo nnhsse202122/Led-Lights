@@ -13,6 +13,7 @@ Future<List<Scene>> fetchScenesFromServer() async {
   print('Response status: ${response.statusCode}');
   print('Response body: ${response.body}');
 
+  //what should you do with test code like below? \/
   var jsonString = '''
   {
   "id":1,
