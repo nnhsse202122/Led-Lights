@@ -161,6 +161,8 @@ const updateScene = (req, res, next) => {
         scene.brightness = req.body.brightness;
         scene.mode = req.body.mode;
         scene.day_of_week = req.body.day_of_week;
+        console.log("updated scene");
+        console.log(scene);
         fs.writeFileSync(ledsFilePath, JSON.stringify(leds));
         res.status(200).json(scene);    
       }
