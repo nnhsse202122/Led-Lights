@@ -77,3 +77,15 @@ class DayOfWeek(FlaskForm):
     def __init__(self, original_username, *args, **kwargs):
         super(DayOfWeek, self).__init__(*args, **kwargs)
         self.original_username = original_username
+
+class EditSchedule(FlaskForm):
+    day_of_week = StringField('Day of the Week', render_kw={'placeholder': '"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", or "sunday"'})
+    color = StringField('Color', render_kw={'placeholder': 'Valid Format is "rrggbb"'}, validators=[DataRequired()])
+    brightness = IntegerField('Brightness', render_kw={'placeholder': 'Integer value'})
+    mode = StringField('Mode', render_kw={'placeholder': '"solid" or "pulse"'}, validators=[DataRequired()])
+    start_time = StringField('Start Time', render_kw={'placeholder': 'Valid Format is "hh:mm"'}, validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+    def __init__(self, original_username, *args, **kwargs):
+        super(EditSchedule, self).__init__(*args, **kwargs)
+        self.original_username = original_username

@@ -3,13 +3,17 @@ from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db #importing the app variable (right) defined in the app package (left)
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek, EditSchedule
 from app.models import User
 import requests
 import json
 import time
 
 #from decimal import Decimal
+
+nodeServer = "http://localhost:3000"
+realServer = "https://classroomleds.nnhsse.org"
+
 
 @app.before_request
 def before_request():
@@ -109,20 +113,23 @@ def index():
         }
     ]
     #CODE RIGHT HERE TO PUT IN DATA
-    r = requests.get("https://classroomleds.nnhsse.org/leds/1")
+    r = requests.get(nodeServer + "/leds/1")
     data = r.json()
     data_dumps = json.dumps(data)
     dataDict = json.loads(data_dumps)['scenes']
     #print(dataDict)
 
-#appending date strings to only be the time
+    #appending date strings to only be the time
     for i in dataDict:
         sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
         sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
         i["start_time"] = sch_time
+        i["color"] = "#" + i["color"][2:]
+    
 
     
     return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, dataDict = dataDict)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): #Figure out which 
@@ -141,10 +148,12 @@ def login(): #Figure out which
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -160,6 +169,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -169,6 +179,7 @@ def user(username):
 #        {'author': user, 'body': 'I\'m scheduling the color, brightness, and pattern of the LEDs!'}
     ]
     return render_template('user.html', user=user, posts=posts)
+
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -185,6 +196,7 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
+
 @app.route('/override', methods=['GET', 'POST'])
 @login_required
 def override():
@@ -196,14 +208,14 @@ def override():
         brightness = form.brightness.data
         mode = form.mode.data
         override_duration = form.override_duration.data
-        start_time = form.start_time.data
+        start_time1 = form.start_time.data
 
         data_post = {
             "color": "ff" + color,
             "brightness": brightness,
             "mode": mode,
             "override_duration": override_duration,
-            "start_time": "1900-01-01T" + start_time + ":00.000"}        
+            "start_time": "1900-01-01T" + start_time1 + ":00.000"}        
         
         post_dumps = json.dumps(data_post)
         post_dict = json.loads(post_dumps)
@@ -213,6 +225,7 @@ def override():
         flash('Your changes have been saved.')
         return redirect(url_for('index'))
     return render_template('override.html', title='Override', form=form)
+
 
 @app.route('/date', methods=['GET', 'POST'])
 @login_required
@@ -243,6 +256,7 @@ def date():
         return redirect(url_for('index'))
     return render_template('date.html', title='Date', form=form)
 
+
 @app.route('/dayofweek', methods=['GET', 'POST'])
 @login_required
 def dayofweek():
@@ -270,4 +284,63 @@ def dayofweek():
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('index'))
+    return render_template('dayofweek.html', title='Day of Week', form=form)
+
+
+@app.route('/editschedule/<id>', methods=['GET', 'POST'])
+@login_required
+def editschedule(id):
+    form = EditSchedule(current_user.username)
+
+
+    if form.validate_on_submit():
+        URL_put = nodeServer + "/leds/1/scenes/{}".format(id)
+
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        start_time = form.start_time.data
+        day = form.day_of_week.data
+
+        
+        data_put = {
+            "id": id,
+            "color": "ff" + color,
+            "brightness": brightness,
+            "mode": mode,
+            "day_of_week": day,
+            "start_time": "1900-01-01T" + start_time + ":00.000"}
+
+        print(data_put)    
+
+        post_dumps = json.dumps(data_put)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.put(URL_put, json = data_put)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    
+    # GET request to access current JSON data
+    r = requests.get(nodeServer + "/leds/1")
+    data = r.json()
+    data_dumps = json.dumps(data)
+    dataDict = json.loads(data_dumps)['scenes']
+
+    #currentScene = the scene which is being edited by user
+    currentScene = dataDict[int(id)-1]
+
+    #format the date to fit the text field properly
+    sch_date = datetime.datetime.strptime(currentScene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+
+    form.color.data = currentScene["color"][2:]
+    form.brightness.data = currentScene["brightness"]
+    form.mode.data = currentScene["mode"]
+    if sch_date.hour < 10:
+        form.start_time.data = "0" + str(sch_date.hour) + ":" + str(sch_date.minute)
+    else:
+        form.start_time.data = str(sch_date.hour) + ":" + str(sch_date.minute)
+    form.day_of_week.data = currentScene["day_of_week"]
+
     return render_template('dayofweek.html', title='Day of Week', form=form)
