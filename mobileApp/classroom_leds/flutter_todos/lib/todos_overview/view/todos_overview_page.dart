@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +18,23 @@ class TodosOverviewPage extends StatelessWidget {
       child: const TodosOverviewView(),
     );
   }
+}
+
+//normally, if there is an onPressed attribute, you put in this method
+//to check the currentScene when the button is like refreshed or something
+final randomColor = Color.fromARGB(255, 14, 78, 143);
+var currentScene = Scene(10, DateTime.now(), randomColor, 'solid',
+    DateTime.now().weekday.toString(), false);
+Scene checkCurrentScene(List<Scene> scenes) {
+  Timer.periodic(Duration(seconds: 1), (timer) {
+    for (Scene individualScene in scenes) {
+      if ((individualScene.day_of_week == DateTime.now().weekday) &&
+          (individualScene.startTime == DateTime.now())) {
+        currentScene = individualScene;
+      }
+    }
+  });
+  return currentScene;
 }
 
 class TodosOverviewView extends StatelessWidget {
@@ -50,7 +69,7 @@ class TodosOverviewView extends StatelessWidget {
                 child: ListView(
                   children: [
                     for (final individualScene in state.scenes)
-                      TodoListTile(scene: individualScene
+                      TodoListTile(scene: currentScene
                           // onToggleCompleted: (isCompleted) {
                           //   context.read<TodosOverviewBloc>().add(
                           //         TodosOverviewTodoCompletionToggled(
