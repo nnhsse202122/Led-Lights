@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db #importing the app variable (right) defined in the app package (left)
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek, EditSchedule
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek, EditSchedule, AddScene
 from app.models import User
 import requests
 import json
@@ -342,5 +342,51 @@ def editschedule(id):
     else:
         form.start_time.data = str(sch_date.hour) + ":" + str(sch_date.minute)
     form.day_of_week.data = currentScene["day_of_week"]
+
+    return render_template('editschedule.html', title='Day of Week', form=form)
+
+@app.route('/addscene/<id>', methods=['GET', 'POST'])
+@login_required
+def editschedule(id):
+    form = AddScene(current_user.username)
+
+
+    if form.validate_on_submit():
+        URL_put = nodeServer + "/leds/1/scenes"
+
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        start_time = form.start_time.data
+        day = form.day_of_week.data
+
+        
+        data_put = {
+            "id": id,
+            "color": "ff" + color,
+            "brightness": brightness,
+            "mode": mode,
+            "day_of_week": day,
+            "start_time": "1900-01-01T" + start_time + ":00.000"}
+
+        print(data_put)    
+
+        post_dumps = json.dumps(data_put)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.put(URL_put, json = data_put)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    
+    # GET request to access current JSON data
+    r = requests.get(nodeServer + "/leds/1")
+    data = r.json()
+    data_dumps = json.dumps(data)
+    dataDict = json.loads(data_dumps)['scenes']
+    count = 1
+    #currentScene = the scene which is being edited by user
+    currentScene = dataDict[int(id)-1]
 
     return render_template('dayofweek.html', title='Day of Week', form=form)
