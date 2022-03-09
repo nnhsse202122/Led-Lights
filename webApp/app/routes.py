@@ -345,14 +345,23 @@ def editschedule(id):
 
     return render_template('editschedule.html', title='Day of Week', form=form)
 
-@app.route('/addscene/<id>', methods=['GET', 'POST'])
+@app.route('/addscene', methods=['GET', 'POST'])
 @login_required
-def editschedule(id):
+def addscene():
     form = AddScene(current_user.username)
 
+    # GET request to access current JSON data
+    r = requests.get(nodeServer + "/leds/1")
+    data = r.json()
+    data_dumps = json.dumps(data)
+    dataDict = json.loads(data_dumps)['scenes']
+    count = 0
+    for scene in dataDict:
+        count+=1
+    id = count + 1
 
     if form.validate_on_submit():
-        URL_put = nodeServer + "/leds/1/scenes"
+        URL_post = nodeServer + "/leds/1/scenes"
 
 
         color = form.color.data
@@ -362,31 +371,23 @@ def editschedule(id):
         day = form.day_of_week.data
 
         
-        data_put = {
+        data_post = {
             "id": id,
             "color": "ff" + color,
             "brightness": brightness,
             "mode": mode,
             "day_of_week": day,
             "start_time": "1900-01-01T" + start_time + ":00.000"}
+  
 
-        print(data_put)    
-
-        post_dumps = json.dumps(data_put)
+        post_dumps = json.dumps(data_post)
         post_dict = json.loads(post_dumps)
-        r_post = requests.put(URL_put, json = data_put)
+        r_post = requests.post(URL_post, json = data_post)
 
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('index'))
     
-    # GET request to access current JSON data
-    r = requests.get(nodeServer + "/leds/1")
-    data = r.json()
-    data_dumps = json.dumps(data)
-    dataDict = json.loads(data_dumps)['scenes']
-    count = 1
-    #currentScene = the scene which is being edited by user
-    currentScene = dataDict[int(id)-1]
 
-    return render_template('dayofweek.html', title='Day of Week', form=form)
+
+    return render_template('editschedule.html', title='Add Scene', form=form)
