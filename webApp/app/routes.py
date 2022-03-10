@@ -118,6 +118,7 @@ def index():
     data_dumps = json.dumps(data)
     dataDict = json.loads(data_dumps)['scenes']
     #print(dataDict)
+    dataDict.sort(key=lambda k: k['start_time'])
 
     #appending date strings to only be the time
     for i in dataDict:
