@@ -21,7 +21,8 @@ class Scene implements Comparable<Scene> {
         color = Color(int.parse(json['color'] as String, radix: 16))
             .withAlpha(((json['brightness'] as double) * 255).toInt()),
         mode = json['mode'] as String,
-        day_of_week = "", //json['day_of_week'] as String,
+        day_of_week = (json['day_of_week'] ?? '') as String,
+        //json['day_of_week'] as String,
         isCompleted = false;
 
   bool isCurrentScene() {
