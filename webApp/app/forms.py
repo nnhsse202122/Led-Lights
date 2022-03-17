@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, PasswordField, BooleanField, SubmitField, IntegerField, DecimalField, DateTimeField
+from wtforms import StringField, TextAreaField, PasswordField, BooleanField, SubmitField, IntegerField, DecimalField, DateTimeField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User
 
@@ -79,7 +79,7 @@ class DayOfWeek(FlaskForm):
         self.original_username = original_username
 
 class EditSchedule(FlaskForm):
-    day_of_week = StringField('Day of the Week', render_kw={'placeholder': '"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", or "sunday"'})
+    day_of_week = SelectField('Day of the Week', choices=[('monday','mon'), ('tuesday','tues'), ('wednesday','wed'), ('thursday','thurs'), ('friday','fri'), ('saturday','sat'), ('sunday','sun')])
     color = StringField('Color', render_kw={'placeholder': 'Valid Format is "rrggbb"'}, validators=[DataRequired()])
     brightness = IntegerField('Brightness', render_kw={'placeholder': 'Integer value'})
     mode = StringField('Mode', render_kw={'placeholder': '"solid" or "pulse"'}, validators=[DataRequired()])
