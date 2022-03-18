@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, PasswordField, BooleanField, SubmitField, IntegerField, DecimalField, DateTimeField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User
-
+from wtforms.widgets.html5 import ColorInput
 #This is the form for logging in on the web app.
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()]) #validators is a list and object, can have more than one
@@ -79,10 +79,10 @@ class DayOfWeek(FlaskForm):
         self.original_username = original_username
 
 class EditSchedule(FlaskForm):
-    day_of_week = SelectField('Day of the Week', choices=[('monday','mon'), ('tuesday','tues'), ('wednesday','wed'), ('thursday','thurs'), ('friday','fri'), ('saturday','sat'), ('sunday','sun')])
-    color = StringField('Color', render_kw={'placeholder': 'Valid Format is "rrggbb"'}, validators=[DataRequired()])
-    brightness = IntegerField('Brightness', render_kw={'placeholder': 'Integer value'})
-    mode = StringField('Mode', render_kw={'placeholder': '"solid" or "pulse"'}, validators=[DataRequired()])
+    day_of_week = SelectField('Day of the Week', choices=[('monday','mon'), ('tuesday','tues'), ('wednesday','wed'), ('thursday','thurs'), ('friday','fri'), ('saturday','sat'), ('sunday','sun')], validators=[DataRequired()])
+    color = StringField(widget=ColorInput(), validators=[DataRequired()])
+    brightness = SelectField('Brightness', choices=[('0','0'), ('1','1')], validators=[DataRequired()])
+    mode = SelectField('Mode', choices=[('pulse','pulse'), ('solid','solid')], validators=[DataRequired()])
     start_time = StringField('Start Time', render_kw={'placeholder': 'Valid Format is "hh:mm"'}, validators=[DataRequired()])
     submit = SubmitField('Submit')
 
