@@ -8,6 +8,21 @@ import 'package:flutter_todos/todos_overview/todos_overview.dart';
 import 'package:todos_repository/todos_repository.dart';
 import 'package:intl/intl.dart';
 
+class SceneCreator {
+  SceneCreator() {
+    //create a timer that checks every second and reassigns the current Scene
+    Timer.periodic(Duration(seconds: 1), (t) {
+      _controller.sink.add(currentScene);
+      //if statements to check if the currentScene is updated
+      //at the end, currentScene = scene;
+    });
+  }
+}
+
+final _controller = StreamController<Scene>();
+
+Stream<Scene> get stream => _controller.stream;
+
 class TodosOverviewPage extends StatelessWidget {
   const TodosOverviewPage({Key? key}) : super(key: key);
 
