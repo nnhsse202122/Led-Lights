@@ -307,7 +307,7 @@ def editschedule(id):
         
         data_put = {
             "id": id,
-            "color": "ff" + color,
+            "color": "ff" + color[1:],
             "brightness": brightness,
             "mode": mode,
             "day_of_week": day,
@@ -335,7 +335,7 @@ def editschedule(id):
     #format the date to fit the text field properly
     sch_date = datetime.datetime.strptime(currentScene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
 
-    form.color.data = currentScene["color"][2:]
+    #form.color.data = currentScene["color"][2:]
     form.brightness.data = currentScene["brightness"]
     form.mode.data = currentScene["mode"]
     if sch_date.hour < 10:
@@ -392,3 +392,21 @@ def addscene():
 
 
     return render_template('editschedule.html', title='Add Scene', form=form)
+
+
+@app.route('/deleteScene/<id>', methods=['GET', 'POST'])
+@login_required
+def deleteScene(id):
+    #form =
+
+
+    #if form.validate_on_submit():
+        URL_delete = nodeServer + "/leds/1/scenes/{}".format(id)
+
+
+        requests.delete(URL_delete)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    
