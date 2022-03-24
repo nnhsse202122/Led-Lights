@@ -356,10 +356,11 @@ def addscene():
     data = r.json()
     data_dumps = json.dumps(data)
     dataDict = json.loads(data_dumps)['scenes']
-    count = 0
+    maxid = 0
     for scene in dataDict:
-        count+=1
-    id = count + 1
+        if scene["id"] > maxid:
+            maxid = scene["id"]
+    currentid = maxid + 1
 
     if form.validate_on_submit():
         URL_post = nodeServer + "/leds/1/scenes"
@@ -373,8 +374,8 @@ def addscene():
 
         
         data_post = {
-            "id": id,
-            "color": "ff" + color,
+            "id": currentid,
+            "color": "ff" + color[1:],
             "brightness": brightness,
             "mode": mode,
             "day_of_week": day,
