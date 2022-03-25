@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db #importing the app variable (right) defined in the app package (left)
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek, EditSchedule
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek, EditSchedule, AddScene
 from app.models import User
 import requests
 import json
@@ -118,6 +118,7 @@ def index():
     data_dumps = json.dumps(data)
     dataDict = json.loads(data_dumps)['scenes']
     #print(dataDict)
+    dataDict.sort(key=lambda k: k['start_time'])
 
     #appending date strings to only be the time
     for i in dataDict:
@@ -306,7 +307,7 @@ def editschedule(id):
         
         data_put = {
             "id": id,
-            "color": "ff" + color,
+            "color": "ff" + color[1:],
             "brightness": brightness,
             "mode": mode,
             "day_of_week": day,
@@ -334,7 +335,7 @@ def editschedule(id):
     #format the date to fit the text field properly
     sch_date = datetime.datetime.strptime(currentScene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
 
-    form.color.data = currentScene["color"][2:]
+    #form.color.data = currentScene["color"][2:]
     form.brightness.data = currentScene["brightness"]
     form.mode.data = currentScene["mode"]
     if sch_date.hour < 10:
@@ -343,4 +344,70 @@ def editschedule(id):
         form.start_time.data = str(sch_date.hour) + ":" + str(sch_date.minute)
     form.day_of_week.data = currentScene["day_of_week"]
 
-    return render_template('dayofweek.html', title='Day of Week', form=form)
+    return render_template('editschedule.html', title='Day of Week', form=form)
+
+@app.route('/addscene', methods=['GET', 'POST'])
+@login_required
+def addscene():
+    form = AddScene(current_user.username)
+
+    # GET request to access current JSON data
+    r = requests.get(nodeServer + "/leds/1")
+    data = r.json()
+    data_dumps = json.dumps(data)
+    dataDict = json.loads(data_dumps)['scenes']
+    maxid = 0
+    for scene in dataDict:
+        if scene["id"] > maxid:
+            maxid = scene["id"]
+    currentid = maxid + 1
+
+    if form.validate_on_submit():
+        URL_post = nodeServer + "/leds/1/scenes"
+
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        start_time = form.start_time.data
+        day = form.day_of_week.data
+
+        
+        data_post = {
+            "id": currentid,
+            "color": "ff" + color[1:],
+            "brightness": brightness,
+            "mode": mode,
+            "day_of_week": day,
+            "start_time": "1900-01-01T" + start_time + ":00.000"}
+  
+
+        post_dumps = json.dumps(data_post)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.post(URL_post, json = data_post)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    
+
+
+    return render_template('editschedule.html', title='Add Scene', form=form)
+
+
+@app.route('/deleteScene/<id>', methods=['GET', 'POST'])
+@login_required
+def deleteScene(id):
+    #form =
+
+
+    #if form.validate_on_submit():
+        URL_delete = nodeServer + "/leds/1/scenes/{}".format(id)
+
+
+        requests.delete(URL_delete)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    

@@ -1,0 +1,121 @@
+2022-02-14 14:53:52,312 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 120, in index
+    sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '1900-01-01T07:39:00:00.000' does not match format '%Y-%m-%dT%H:%M:%S.%f'
+2022-02-14 14:59:22,440 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-14 14:59:27,585 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 120, in index
+    sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '1900-01-01T07:39:00:00.000' does not match format '%Y-%m-%dT%H:%M:%S.%f'
+2022-02-14 15:01:14,571 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-14 15:01:15,488 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 120, in index
+    sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '1900-01-01T07:39:00:00.000' does not match format '%Y-%m-%dT%H:%M:%S.%f'
+2022-02-16 14:27:17,140 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-16 14:27:24,371 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 120, in index
+    sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '1900-01-01T07:39:00:00.000' does not match format '%Y-%m-%dT%H:%M:%S.%f'
+2022-02-16 14:31:30,221 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-16 14:32:07,481 ERROR: Exception on /editschedule/1 [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 317, in editschedule
+    "start_time": "1900-01-01T" + start_time + ":00.000"}
+TypeError: can only concatenate str (not "datetime.time") to str
+2022-02-16 14:38:17,512 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-16 14:41:01,973 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-16 14:41:12,921 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-16 14:52:12,241 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-16 14:59:29,301 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-18 14:30:26,885 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
