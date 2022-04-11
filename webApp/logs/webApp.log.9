@@ -1,0 +1,140 @@
+2022-02-08 14:44:24,872 ERROR: Exception on / [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 125, in index
+    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, dataDict = dataDict)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Led-Lights\webapp\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Led-Lights\webapp\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Led-Lights\webapp\app\templates\base.html", line 47, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Led-Lights\webapp\app\templates\index.html", line 54, in block "app_content"
+    <td><a type="button" class="btn btn-primary btn-sm" href="{{ url_for('editschedule/{{ scene.id }}') }}">Edit</a></td>
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "c:\led-lights\webapp\venv\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'editschedule/{{ scene.id }}'. Did you mean 'editschedule' instead?
+2022-02-08 14:50:38,802 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-08 14:51:52,320 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-08 15:10:09,237 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-08 15:10:15,118 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-08 15:10:56,889 ERROR: Exception on /editschedule/1 [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 301, in editschedule
+    "day_of_week": currentDict.day_of_week,
+UnboundLocalError: local variable 'currentDict' referenced before assignment
+2022-02-09 14:26:04,243 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-09 14:29:55,888 ERROR: Exception on /editschedule/1 [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 301, in editschedule
+    "day_of_week": currentDict.day_of_week,
+UnboundLocalError: local variable 'currentDict' referenced before assignment
+2022-02-09 14:32:00,280 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-09 14:32:29,647 ERROR: Exception on /editschedule/1 [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 301, in editschedule
+    "day_of_week": currentDict.day_of_week,
+UnboundLocalError: local variable 'currentDict' referenced before assignment
+2022-02-09 14:40:34,828 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-09 14:40:58,447 ERROR: Exception on /editschedule/1 [POST] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webapp\app\routes.py", line 301, in editschedule
+    "day_of_week": currentScene.day_of_week,
+UnboundLocalError: local variable 'currentScene' referenced before assignment
+2022-02-09 14:45:09,408 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]
+2022-02-09 14:48:52,124 INFO: WebApp startup [in C:\Led-Lights\webapp\app\__init__.py:45]

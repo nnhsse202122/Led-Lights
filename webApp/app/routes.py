@@ -398,10 +398,6 @@ def addscene():
 @app.route('/deleteScene/<id>', methods=['GET', 'POST'])
 @login_required
 def deleteScene(id):
-    #form =
-
-
-    #if form.validate_on_submit():
         URL_delete = nodeServer + "/leds/1/scenes/{}".format(id)
 
 

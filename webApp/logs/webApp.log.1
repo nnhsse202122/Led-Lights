@@ -1,4 +1,15 @@
-2022-03-17 14:51:37,718 ERROR: Exception on /editschedule/1 [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+2022-03-18 14:58:48,811 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-22 14:29:18,911 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-22 14:32:21,742 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-22 14:33:29,694 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-22 14:35:48,788 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-22 14:51:34,268 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-22 14:53:03,960 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-22 14:55:50,217 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-22 14:57:27,006 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-22 14:59:40,792 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-24 14:31:17,341 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-24 14:31:26,138 ERROR: Exception on /addscene [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,44 +25,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 347, in editschedule
-    return render_template('editschedule.html', title='Day of Week', form=form)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\templating.py", line 140, in render_template
-    ctx.app,
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\templating.py", line 120, in _render
-    rv = template.render(context)
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Led-Lights\webApp\app\templates\editschedule.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "C:\Led-Lights\webApp\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
-    {% block content -%}
-  File "C:\Led-Lights\webApp\app\templates\editschedule.html", line 11, in block "content"
-    {{ form.day_of_week(size=32) }}
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\fields\core.py", line 160, in __call__
-    return self.meta.render_field(self, kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\meta.py", line 56, in render_field
-    return field.widget(field, **render_kw)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\widgets\core.py", line 300, in __call__
-    for val, label, selected in field.iter_choices():
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\fields\core.py", line 525, in iter_choices
-    for value, label in self.choices:
-ValueError: too many values to unpack (expected 2)
-2022-03-17 14:53:41,481 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-03-17 14:54:04,572 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-03-17 14:54:08,374 ERROR: Exception on /editschedule/1 [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+  File "C:\Led-Lights\webApp\app\routes.py", line 361, in addscene
+    if scene.id > maxid:
+AttributeError: 'dict' object has no attribute 'id'
+2022-03-24 14:32:54,439 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-24 14:32:57,718 ERROR: Exception on /addscene [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -67,47 +45,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 347, in editschedule
-    return render_template('editschedule.html', title='Day of Week', form=form)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\templating.py", line 140, in render_template
-    ctx.app,
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask\templating.py", line 120, in _render
-    rv = template.render(context)
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "c:\led-lights\webapp\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Led-Lights\webApp\app\templates\editschedule.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "C:\Led-Lights\webApp\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
-    {% block content -%}
-  File "C:\Led-Lights\webApp\app\templates\editschedule.html", line 11, in block "content"
-    {{ form.day_of_week(size=32) }}
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\fields\core.py", line 160, in __call__
-    return self.meta.render_field(self, kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\meta.py", line 56, in render_field
-    return field.widget(field, **render_kw)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\widgets\core.py", line 300, in __call__
-    for val, label, selected in field.iter_choices():
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\fields\core.py", line 525, in iter_choices
-    for value, label in self.choices:
-ValueError: too many values to unpack (expected 2)
-2022-03-17 14:59:22,002 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-03-17 15:01:26,113 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-03-18 14:29:19,740 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-03-18 14:45:12,505 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-03-18 14:58:00,544 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
-2022-03-18 14:58:02,866 ERROR: Exception on /editschedule/1 [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+  File "C:\Led-Lights\webApp\app\routes.py", line 361, in addscene
+    if scene[int(id)] > maxid:
+UnboundLocalError: local variable 'id' referenced before assignment
+2022-03-24 14:33:46,673 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-24 14:33:50,221 ERROR: Exception on /addscene [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -123,20 +65,54 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Led-Lights\webApp\app\routes.py", line 294, in editschedule
-    form = EditSchedule(current_user.username)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\form.py", line 208, in __call__
-    return type.__call__(cls, *args, **kwargs)
-  File "C:\Led-Lights\webApp\app\forms.py", line 90, in __init__
-    super(EditSchedule, self).__init__(*args, **kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\flask_wtf\form.py", line 87, in __init__
-    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\form.py", line 268, in __init__
-    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\form.py", line 51, in __init__
-    field = meta.bind_field(self, unbound_field, options)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\meta.py", line 27, in bind_field
-    return unbound_field.bind(form=form, **options)
-  File "c:\led-lights\webapp\venv\lib\site-packages\wtforms\fields\core.py", line 376, in bind
-    return self.field_class(*self.args, **kw)
-TypeError: __init__() got an unexpected keyword argument 'choices'
+  File "C:\Led-Lights\webApp\app\routes.py", line 361, in addscene
+    if scene[int(id)] > maxid:
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'builtin_function_or_method'
+2022-03-24 14:34:31,737 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-24 14:34:33,808 ERROR: Exception on /addscene [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webApp\app\routes.py", line 361, in addscene
+    if scene[int(id)] > maxid:
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'builtin_function_or_method'
+2022-03-24 14:35:34,845 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-24 14:36:14,960 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-24 14:38:58,994 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-25 14:23:02,063 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-25 14:46:17,324 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-25 14:47:55,326 ERROR: Exception on /index [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webApp\app\routes.py", line 125, in index
+    sch_date = datetime.datetime.strptime(i["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 577, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Program Files (x86)\Python37-32\lib\_strptime.py", line 359, in _strptime
+    (data_string, format))
+ValueError: time data '1900-01-01Tresxest:00.000' does not match format '%Y-%m-%dT%H:%M:%S.%f'
