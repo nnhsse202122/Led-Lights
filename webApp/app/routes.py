@@ -87,31 +87,32 @@ def index():
 #            'author': {'username': 'Bill'},
 #            'body': r1.text
 #        }
+#
+ #   posts1 = [
+ #       {
+ #           'author': {'username': 'Bill'},
+ #           'body': "Day of Week: Specify a day of the week (monday, tuesday, wednesday, \
+ #               thursday, friday, saturday, sunday) in order to create an override for that \
+ #               day of the week."
+ #       }
+ #   ]
+ #   
+ #   posts2 = [
+ #       {
+ #           'author': {'username': 'Bill'},
+ #           'body': "Date: Specify a date using ISO 8601 notation (\"YYYY-MM-DD\") in order \
+ #               to override the LEDs on that specific date."
+ #       }
+ #   ]
+#
+ #   posts3 = [
+ #       {
+ #           'author': {'username': 'Bill'},
+ #           'body': "Override Duration: Override the LEDs right now for a specified amount \
+ #               of time in minutes."
+ #       }
+ #   ]
 
-    posts1 = [
-        {
-            'author': {'username': 'Bill'},
-            'body': "Day of Week: Specify a day of the week (monday, tuesday, wednesday, \
-                thursday, friday, saturday, sunday) in order to create an override for that \
-                day of the week."
-        }
-    ]
-    
-    posts2 = [
-        {
-            'author': {'username': 'Bill'},
-            'body': "Date: Specify a date using ISO 8601 notation (\"YYYY-MM-DD\") in order \
-                to override the LEDs on that specific date."
-        }
-    ]
-
-    posts3 = [
-        {
-            'author': {'username': 'Bill'},
-            'body': "Override Duration: Override the LEDs right now for a specified amount \
-                of time in minutes."
-        }
-    ]
     #CODE RIGHT HERE TO PUT IN DATA
     r = requests.get(nodeServer + "/leds/1")
     data = r.json()
@@ -129,7 +130,7 @@ def index():
     
 
     
-    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3, dataDict = dataDict)
+    return render_template('index.html', title='Home', dataDict = dataDict)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -198,6 +199,9 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 
+
+# Overriding current scene - does not work yet
+"""
 @app.route('/override', methods=['GET', 'POST'])
 @login_required
 def override():
@@ -226,7 +230,7 @@ def override():
         flash('Your changes have been saved.')
         return redirect(url_for('index'))
     return render_template('override.html', title='Override', form=form)
-
+"""
 
 @app.route('/date', methods=['GET', 'POST'])
 @login_required
@@ -258,6 +262,7 @@ def date():
     return render_template('date.html', title='Date', form=form)
 
 
+"""
 @app.route('/dayofweek', methods=['GET', 'POST'])
 @login_required
 def dayofweek():
@@ -286,7 +291,7 @@ def dayofweek():
         flash('Your changes have been saved.')
         return redirect(url_for('index'))
     return render_template('dayofweek.html', title='Day of Week', form=form)
-
+"""
 
 @app.route('/editschedule/<id>', methods=['GET', 'POST'])
 @login_required
@@ -330,7 +335,9 @@ def editschedule(id):
     dataDict = json.loads(data_dumps)['scenes']
 
     #currentScene = the scene which is being edited by user
-    currentScene = dataDict[int(id)-1]
+    for i in dataDict:
+        if i["id"] == int(id):
+            currentScene = i
 
     #format the date to fit the text field properly
     sch_date = datetime.datetime.strptime(currentScene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
@@ -344,7 +351,7 @@ def editschedule(id):
         form.start_time.data = str(sch_date.hour) + ":" + str(sch_date.minute)
     form.day_of_week.data = currentScene["day_of_week"]
 
-    return render_template('editschedule.html', title='Day of Week', form=form)
+    return render_template('editschedule.html', title='Edit Scene', form=form)
 
 @app.route('/addscene', methods=['GET', 'POST'])
 @login_required
@@ -392,7 +399,7 @@ def addscene():
     
 
 
-    return render_template('editschedule.html', title='Add Scene', form=form)
+    return render_template('addscene.html', title='Add Scene', form=form)
 
 
 @app.route('/deleteScene/<id>', methods=['GET', 'POST'])

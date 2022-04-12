@@ -1,4 +1,4 @@
-2022-02-18 14:31:08,993 ERROR: Exception on /index [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+2022-02-18 14:31:10,666 ERROR: Exception on /index [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
 Traceback (most recent call last):
   File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 170, in _new_conn
     (self._dns_host, self.port), self.timeout, **extra_kw
@@ -31,7 +31,7 @@ Traceback (most recent call last):
     conn = self._new_conn()
   File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\connection.py", line 182, in _new_conn
     self, "Failed to establish a new connection: %s" % e
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x05F55DD0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x05CBA990>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
 
 During handling of the above exception, another exception occurred:
 
@@ -42,7 +42,7 @@ Traceback (most recent call last):
     method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
   File "c:\led-lights\webapp\venv\lib\site-packages\urllib3\util\retry.py", line 574, in increment
     raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /leds/1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x05F55DD0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /leds/1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x05CBA990>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
 
 During handling of the above exception, another exception occurred:
 
@@ -73,4 +73,48 @@ Traceback (most recent call last):
     r = adapter.send(request, **kwargs)
   File "c:\led-lights\webapp\venv\lib\site-packages\requests\adapters.py", line 516, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /leds/1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x05F55DD0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /leds/1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x05CBA990>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2022-02-18 14:31:41,291 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-18 14:36:44,333 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-18 14:36:46,973 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-18 14:47:48,641 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-22 14:28:17,058 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-22 15:01:39,205 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-22 15:07:10,128 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-23 14:44:57,297 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-23 14:48:05,587 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-23 15:02:36,772 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-24 14:40:33,782 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-24 14:48:55,654 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-24 14:49:20,537 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-24 14:50:12,482 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-24 15:00:28,207 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-02-24 15:03:00,094 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-01 14:28:42,088 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-01 15:00:26,499 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-08 14:46:43,950 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-08 15:05:06,934 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-09 14:38:34,766 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-09 14:40:02,839 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-09 14:40:14,265 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-09 14:40:18,472 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
+2022-03-09 14:40:34,823 ERROR: Exception on /addscene [GET] [in c:\led-lights\webapp\venv\lib\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\led-lights\webapp\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Led-Lights\webApp\app\routes.py", line 392, in addscene
+    currentScene = dataDict[int(id)-1]
+IndexError: list index out of range
+2022-03-09 14:41:23,208 INFO: WebApp startup [in C:\Led-Lights\webApp\app\__init__.py:45]
