@@ -11,7 +11,7 @@ part 'scenes_state.dart';
 class ScenesCubit extends Cubit<ScenesState> {
   ScenesCubit() : super(const ScenesInitial());
 
-  void fetchScenes() async {
+  Future fetchScenes() async {
     emit(ScenesLoading());
 
     //api calls
@@ -23,5 +23,7 @@ class ScenesCubit extends Cubit<ScenesState> {
 
     // TODO: pass scenes to state???
     emit(newState);
+
+    return newState.scenes;
   }
 }
