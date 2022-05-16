@@ -37,7 +37,7 @@ class TodoListTile extends StatelessWidget {
       child: ListTile(
         onTap: onTap,
         title: Text(
-          '${scene.id}', //to update to title
+          'Current Scene: Scene #${scene.id}',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: !scene.isCompleted
@@ -48,8 +48,10 @@ class TodoListTile extends StatelessWidget {
                 ),
         ),
         subtitle: Text(
-          '$scene', //to update to description
-          maxLines: 1,
+          '''start time: ${scene.day_of_week} ${scene.startTime.hour}:${scene.startTime.minute}
+color: ${scene.color}
+          ''', //to update to description
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
         leading: Checkbox(

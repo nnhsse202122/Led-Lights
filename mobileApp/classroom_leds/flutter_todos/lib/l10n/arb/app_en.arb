@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "todosOverviewAppBarTitle": "Flutter Todos",
+  "todosOverviewAppBarTitle": "Classroom LEDs",
   "@todosOverviewAppBarTitle": {
     "description": "Title text shown in the AppBar of the Todos Overview Page"
   },
