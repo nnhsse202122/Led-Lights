@@ -81,7 +81,7 @@
   "@editTodoEditAppBarTitle": {
     "description": "Title text shown in the AppBar of the Todo Edit Page when editing an existing todo"
   },
-  "editTodoAddAppBarTitle": "Add Todo",
+  "editTodoAddAppBarTitle": "Add Scene",
   "@editTodoAddAppBarTitle": {
     "description": "Title text shown in the AppBar of the Todo Edit Page when adding a new todo"
   },
@@ -101,11 +101,11 @@
   "@statsAppBarTitle": {
     "description": "Title text shown in the AppBar of the Stats Page"
   },
-  "statsCompletedTodoCountLabel": "Completed todos",
+  "statsCompletedTodoCountLabel": "Past scenes",
   "@statsCompletedTodoCountLabel": {
     "description": "Label text shown in the completed todos count section of the Stats Page"
   },
-  "statsActiveTodoCountLabel": "Active todos",
+  "statsActiveTodoCountLabel": "Current scene",
   "@statsActiveTodoCountLabel": {
     "description": "Label text shown in the active todos count section of the Stats Page"
   }
