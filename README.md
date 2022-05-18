@@ -222,7 +222,8 @@ Later, it should be possible for the user to edit entire schedules and not just 
 
 * [Setup](https://flutter.dev/docs/get-started/install) the machine to support Flutter development.
 * Clone this repository.
-* Open the mobileApp/classroomLEDs folder in VS Code
+* Open the mobileApp/classroom_leds folder in VS Code
+* Open the cubitSchmit branch in VS Code (This has the most recent prototype mobile app code that was not finished)
 * Run the app.
 
 ### design
