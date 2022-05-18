@@ -210,11 +210,7 @@ After installing anything new, update requirements.txt
 
 ### design
 
-The homepage currently displays all of the override options and their descriptions. Later, it should display the current schedule of LEDs and their details.
-
-The override forms can be cleaned up and more user friendly. For example: dropdowns can be used for certain fields and a color wheel can be used for the color.
-	
-Later, it should be possible for the user to edit entire schedules and not just override the current LEDs.
+The home page is currently the only page. On this page, ou can view every scene on a table, organized by day of week and start time. It features an add scene button, which allows to add a new scene to the JSON file, which will also show up on the home page table. You can also edit and delete each scene from the table individually using the buttons asigned to each scene. Currently, the start time box has no validation on the edit or add scene forms, so it is possible to break the JSON file by adding a scene with an invalid start time.
 
 ## mobileApp
 
@@ -256,9 +252,7 @@ be more useful for refreshing the page.
 * As a teacher, I want to have multiple LED strands in my classroom and have them function as a single strand (e.g., follow the same schedule, have a single override) via mobile app configuration
 
 ### Web App:
-
-* As a teacher, I want to be able to see the current schedule, color, brightness, and patterns of the LEDs via the Web App in order to later customize them.
-* As a teacher, I want to create and edit a schedule of colors, brightnesses, and patterns for the LEDs in my classroom via a Web App in order to customize them to the activity or bell schedule in advance.
-* As a teacher, I want to override a previous schedule of colors, brightnesses, and patterns for the LEDs in my classroom on my Web App with a new schedule for any predetermined date in order to accommodate a unique bell schedule.
+* As a teacher, I want to override a previous schedule of colors, brightnesses, and patterns for the LEDs in my classroom on my Web App with a new schedule for any predetermined date in order to accommodate a unique bell schedule. (LOW PRIORITY)
 * As a teacher, I want to have multiple LED strands in my classroom and have them function as a single strand (e.g., follow the same schedule, have a single override) via web app configuration
+* As a teacher, I want to be able to change scenes for multiple days at a time to make a consistent schedual
 
