@@ -227,9 +227,17 @@ Later, it should be possible for the user to edit entire schedules and not just 
 
 ### design
 
-The UI of the app needs significant work.
+The homepage displays the attributes that are currently being displayed, such as the ID of the Scene, the color, the start time, etc. 
+In the future, it should display the color name, not the hexcode, and the attribute organization should be cleaned up.
 
-The internal design of the app needs a review and probably significant cleanup.
+There are multiple pages that can be accessed in the bottom hotbar. In the future, these pages can be used to display more data, such as the override functions.
+
+The add Scene function must be modified, because there is currently no page to display the added Scene and the inputs aren't accurate.
+
+The color scheme of the app as a whole should be modified and coordinated with the Web App.
+
+The internal design of the app needs a review and probably significant cleanup. For example: the homepage uses a stateless widget when a stateful widget would
+be more useful for refreshing the page.
 
 ## Unfinished User Stories:
 
@@ -240,7 +248,6 @@ The internal design of the app needs a review and probably significant cleanup.
 	
 ### Mobile App:
 	
-* As a teacher, I want to be able to access the mobile app in order to later be able to change and specify properties of the LEDs.
 * As a teacher, I want to specify, via a mobile app, the color and brightness for the LEDs in my classroom in order to customize them to the activity or classes mood.
 * As a teacher, I want to override the current color, brightness, and pattern for the LEDs in my classroom for a specified period of time in order to accommodate a unique activity or change in plans via use of a mobile app.
 * As a teacher, I want to specify a schedule of colors, brightnesses, and patterns for the LEDs in my classroom via a Mobile App in order to customize them to the activity or bell schedule in advance.
