@@ -15,7 +15,7 @@ There are four components that comprise this project:
 * Start with a clean installation of raspios. This project was created with all full image of buster.
 * Step through the Welcome to Raspberry Pi wizard, including updating software.
 * [Enable SPI](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-spi) on the Raspberry Pi and reboot.
-* Clone this repository.
+* Clone this repository into /home/pi/GitHub/.
 * Change to the raspi directory.
 * Upgrade the setuptools module: `pip3 install --upgrade setuptools`
 * Install the required python modules: `pip3 install -r requirements.txt`
